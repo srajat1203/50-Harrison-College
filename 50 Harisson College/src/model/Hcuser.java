@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,13 +19,15 @@ public class Hcuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name = "hcusersSeq", sequenceName = "hcusers_seq", allocationSize = 1, initialValue = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hcusersSeq")
 	private long userid;
 
 	private String entrydate;
 
 	private String name;
 
-	private BigDecimal officenum;
+	private int officenum;
 
 	private String password;
 
@@ -75,11 +79,11 @@ public class Hcuser implements Serializable {
 		this.name = name;
 	}
 
-	public BigDecimal getOfficenum() {
+	public int getOfficenum() {
 		return this.officenum;
 	}
 
-	public void setOfficenum(BigDecimal officenum) {
+	public void setOfficenum(int officenum) {
 		this.officenum = officenum;
 	}
 
