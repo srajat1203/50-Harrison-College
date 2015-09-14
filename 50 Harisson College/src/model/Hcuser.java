@@ -19,9 +19,9 @@ public class Hcuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "hcusersSeq", sequenceName = "hcusers_seq", allocationSize = 1, initialValue = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hcusersSeq")
-	private long userid;
+	@SequenceGenerator(name = "hcusers_seq", sequenceName = "hcusers_seq", allocationSize = 1, initialValue = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hcusers_seq")
+	private int userid;
 
 	private String entrydate;
 
@@ -55,11 +55,11 @@ public class Hcuser implements Serializable {
 	public Hcuser() {
 	}
 
-	public long getUserid() {
+	public int getUserid() {
 		return this.userid;
 	}
 
-	public void setUserid(long userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 

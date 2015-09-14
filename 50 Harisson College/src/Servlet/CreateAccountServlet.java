@@ -43,10 +43,15 @@ public class CreateAccountServlet extends HttpServlet {
 		Hcuser u = new Hcuser();
 		u.setPassword(password);
 		u.setName(username);
+
 		HcuserDB.insert(u);
+
+		
 		//session.setAttribute("userID", userID);
 		session.setAttribute("user", u);
 		//request.setAttribute("extra", "<h1>extra</h1>"); 
+		System.out.println(u.getName());
+		System.out.println(u.getPassword());
 		System.out.println("success!");
 		//getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
