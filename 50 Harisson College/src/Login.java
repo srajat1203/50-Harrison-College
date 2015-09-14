@@ -61,27 +61,6 @@ public class Login extends HttpServlet {
 					user = dbu.getResult(qString);
 					//System.out.println(user.getName());
 					
-					if(type == 1)
-					{
-						choice = 1;
-						//nextpage = "/Student";
-					}
-					else if(type == 2)
-					{
-						choice = 2;
-						//nextpage = "/Instructor";
-					}
-					else if (type == 3)
-					{
-						choice = 3;
-						//nextpage = "/Advisor";
-					}
-					else if (type == 4)
-					{
-						choice = 4;
-						//nextpage = "/Admin";
-					}
-					
 					HttpSession session = request.getSession();
 					session.setAttribute("curuser", user);
 					nextpage = "/Courses";
@@ -91,7 +70,6 @@ public class Login extends HttpServlet {
 				{
 					System.out.println("no user found");
 					message = err;
-					choice = 5;
 					nextpage = "/LoginDisp.jsp";
 					
 				}

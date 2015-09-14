@@ -24,16 +24,6 @@
       <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
     </div>
     
-    <label for="name">User type</label>
-    <br>
-    <select class="selectpicker" data-style="btn-primary" name="type">
-	  <optgroup label="User Type" > 
-	    <option value="1">Student</option>
-	    <option value="2">Instructor</option>
-	    <option value="3">Advisor</option>
-	    <option value="4">Administrator</option>
-	  </optgroup> 
-	</select>
     
     <br><br>
     <button type="submit" class="btn btn-default">Submit</button>
