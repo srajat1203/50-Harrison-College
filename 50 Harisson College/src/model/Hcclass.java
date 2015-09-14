@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public class Hcclass implements Serializable {
 	private String daytime;
 
 	@Column(name="\"ENABLE\"")
-	private int enable;
+	private BigDecimal enable;
 
 	private String semester;
 
@@ -63,11 +64,11 @@ public class Hcclass implements Serializable {
 		this.daytime = daytime;
 	}
 
-	public int getEnable() {
+	public BigDecimal getEnable() {
 		return this.enable;
 	}
 
-	public void setEnable(int enable) {
+	public void setEnable(BigDecimal enable) {
 		this.enable = enable;
 	}
 

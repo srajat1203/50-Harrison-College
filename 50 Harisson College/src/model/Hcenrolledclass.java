@@ -4,15 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import java.math.BigDecimal;
-
 
 /**
  * The persistent class for the HCENROLLEDCLASS database table.
  * 
  */
 @Entity
-
 @Table(name="Hcenrolledclass", schema="TESTDB")
 @NamedQuery(name="Hcenrolledclass.findAll", query="SELECT h FROM Hcenrolledclass h")
 public class Hcenrolledclass implements Serializable {
@@ -21,7 +18,7 @@ public class Hcenrolledclass implements Serializable {
 	@Id
 	private long id;
 
-	private BigDecimal grade;
+	private double grade;
 
 	private String semester;
 
@@ -46,11 +43,11 @@ public class Hcenrolledclass implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getGrade() {
+	public double getGrade() {
 		return this.grade;
 	}
 
-	public void setGrade(BigDecimal grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
 	}
 

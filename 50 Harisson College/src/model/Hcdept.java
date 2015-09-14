@@ -12,7 +12,6 @@ import java.util.List;
  * 
  */
 @Entity
-
 @Table(name="Hcdept", schema="TESTDB")
 @NamedQuery(name="Hcdept.findAll", query="SELECT h FROM Hcdept h")
 public class Hcdept implements Serializable {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class Hcclassroom implements Serializable {
 
 	private int maxcap;
 
-	private int room;
+	private BigDecimal room;
 
 	//bi-directional many-to-one association to Hcclass
 	@OneToMany(mappedBy="hcclassroom")
@@ -57,11 +58,11 @@ public class Hcclassroom implements Serializable {
 		this.maxcap = maxcap;
 	}
 
-	public int getRoom() {
+	public BigDecimal getRoom() {
 		return this.room;
 	}
 
-	public void setRoom(int room) {
+	public void setRoom(BigDecimal room) {
 		this.room = room;
 	}
 

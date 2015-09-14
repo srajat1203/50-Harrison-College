@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Log in servelte");
 		String userid = request.getParameter("userid");
 		String pass = request.getParameter("pwd");
 		String temp_type = request.getParameter("type");
