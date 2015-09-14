@@ -25,7 +25,14 @@
 		<center>
 			 <h1>Welcome to Harisson College!!</h1>
       			<p>what is it that binds us to this place...</p>
-      			<p><a href="https://www.stanford.edu/" class="btn btn-success btn-lg">Enter!</a></p>
+      			<p><a href="ManageCourseServlet" class="btn btn-success btn-lg">Create, update, list or disable a course</a></p>
+      			<p><a href="ManageClassroomServlet" class="btn btn-success btn-lg">Create, update, list or disable a classroom</a></p>
+      			<p><a href="ManageDepartmentServlet" class="btn btn-success btn-lg">Create, update, list or disable a department</a></p>
+      			<p><a href="ManageMajorServlet" class="btn btn-success btn-lg">Create, update, list or disable a major</a></p>
+      			<p><a href="AddClassServlet" class="btn btn-success btn-lg">Add class to schedule for current or later semester</a></p>
+      			<p><a href="RemoveClassServlet" class="btn btn-success btn-lg">Remove class from schedule for current or later semester</a></p>
+      			<p><a href="ChangeUserTypeServlet" class="btn btn-success btn-lg">Change a new users type to (student, instructor, advisor or administrator)</a></p>
+      			<p><a href="EditEnrollmentServlet" class="btn btn-success btn-lg">Override maximum enrollment hold</a></p>
 		</center>
 	</div>
 </div>

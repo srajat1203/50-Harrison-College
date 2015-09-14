@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="HCCOURSE", schema = "testdb")
 @NamedQuery(name="Hccourse.findAll", query="SELECT h FROM Hccourse h")
 public class Hccourse implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +28,7 @@ public class Hccourse implements Serializable {
 	private String descr;
 
 	@Column(name="\"ENABLE\"")
-	private BigDecimal enable;
+	private int enable;
 
 	private String name;
 
@@ -75,11 +78,11 @@ public class Hccourse implements Serializable {
 		this.descr = descr;
 	}
 
-	public BigDecimal getEnable() {
+	public int getEnable() {
 		return this.enable;
 	}
 
-	public void setEnable(BigDecimal enable) {
+	public void setEnable(int enable) {
 		this.enable = enable;
 	}
 

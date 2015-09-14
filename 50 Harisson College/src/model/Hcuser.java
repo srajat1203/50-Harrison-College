@@ -1,9 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -13,21 +11,19 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HCUSERS")
+@Table(name="HCUSERS", schema = "testdb")
 @NamedQuery(name="Hcuser.findAll", query="SELECT h FROM Hcuser h")
 public class Hcuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "hcusers_seq", sequenceName = "hcusers_seq", allocationSize = 1, initialValue = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hcusers_seq")
-	private int userid;
+	private long userid;
 
 	private String entrydate;
 
 	private String name;
 
-	private int officenum;
+	private BigDecimal officenum;
 
 	private String password;
 
@@ -55,11 +51,11 @@ public class Hcuser implements Serializable {
 	public Hcuser() {
 	}
 
-	public int getUserid() {
+	public long getUserid() {
 		return this.userid;
 	}
 
-	public void setUserid(int userid) {
+	public void setUserid(long userid) {
 		this.userid = userid;
 	}
 
@@ -79,11 +75,11 @@ public class Hcuser implements Serializable {
 		this.name = name;
 	}
 
-	public int getOfficenum() {
+	public BigDecimal getOfficenum() {
 		return this.officenum;
 	}
 
-	public void setOfficenum(int officenum) {
+	public void setOfficenum(BigDecimal officenum) {
 		this.officenum = officenum;
 	}
 
