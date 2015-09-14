@@ -1,7 +1,10 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.math.BigDecimal;
 
 
 /**
@@ -9,6 +12,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
+
+@Table(name="Hcenrolledclass", schema="TESTDB")
 @NamedQuery(name="Hcenrolledclass.findAll", query="SELECT h FROM Hcenrolledclass h")
 public class Hcenrolledclass implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,7 +21,7 @@ public class Hcenrolledclass implements Serializable {
 	@Id
 	private long id;
 
-	private double grade;
+	private BigDecimal grade;
 
 	private String semester;
 
@@ -41,11 +46,11 @@ public class Hcenrolledclass implements Serializable {
 		this.id = id;
 	}
 
-	public double getGrade() {
+	public BigDecimal getGrade() {
 		return this.grade;
 	}
 
-	public void setGrade(double grade) {
+	public void setGrade(BigDecimal grade) {
 		this.grade = grade;
 	}
 

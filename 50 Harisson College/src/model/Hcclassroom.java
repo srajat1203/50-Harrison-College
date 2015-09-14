@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,6 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="Hcclassroom", schema="TESTDB")
 @NamedQuery(name="Hcclassroom.findAll", query="SELECT h FROM Hcclassroom h")
 public class Hcclassroom implements Serializable {
 	private static final long serialVersionUID = 1L;

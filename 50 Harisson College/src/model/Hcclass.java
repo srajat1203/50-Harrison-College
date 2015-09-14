@@ -10,6 +10,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="Hcclass", schema="TESTDB")
 @NamedQuery(name="Hcclass.findAll", query="SELECT h FROM Hcclass h")
 public class Hcclass implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,14 +35,14 @@ public class Hcclass implements Serializable {
 	@JoinColumn(name="COURSENUM")
 	private Hccourse hccourse;
 
-	//bi-directional many-to-one association to Hcenrolledclass
-	@OneToMany(mappedBy="hcclass")
-	private List<Hcenrolledclass> hcenrolledclasses;
-
 	//bi-directional many-to-one association to Hcuser
 	@ManyToOne
 	@JoinColumn(name="INSTRUCTORID")
 	private Hcuser hcuser;
+
+	//bi-directional many-to-one association to Hcenrolledclass
+	@OneToMany(mappedBy="hcclass")
+	private List<Hcenrolledclass> hcenrolledclasses;
 
 	public Hcclass() {
 	}
@@ -94,6 +95,14 @@ public class Hcclass implements Serializable {
 		this.hccourse = hccourse;
 	}
 
+	public Hcuser getHcuser() {
+		return this.hcuser;
+	}
+
+	public void setHcuser(Hcuser hcuser) {
+		this.hcuser = hcuser;
+	}
+
 	public List<Hcenrolledclass> getHcenrolledclasses() {
 		return this.hcenrolledclasses;
 	}
@@ -114,14 +123,6 @@ public class Hcclass implements Serializable {
 		hcenrolledclass.setHcclass(null);
 
 		return hcenrolledclass;
-	}
-
-	public Hcuser getHcuser() {
-		return this.hcuser;
-	}
-
-	public void setHcuser(Hcuser hcuser) {
-		this.hcuser = hcuser;
 	}
 
 }

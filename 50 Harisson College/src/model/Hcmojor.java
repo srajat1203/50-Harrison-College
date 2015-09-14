@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,6 +12,8 @@ import java.util.List;
  * 
  */
 @Entity
+
+@Table(name="Hcmojor", schema="TESTDB")
 @NamedQuery(name="Hcmojor.findAll", query="SELECT h FROM Hcmojor h")
 public class Hcmojor implements Serializable {
 	private static final long serialVersionUID = 1L;
