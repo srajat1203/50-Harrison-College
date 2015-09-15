@@ -54,31 +54,38 @@ public class Login extends HttpServlet {
 		{
 			if(!userid.isEmpty() && !pass.isEmpty())
 			{
-				String qString = "Select u from Hcuser u where u.userid = " + userid + " and u.password = '" + pass + "' and u.type = " + type ;
+				String qString = "Select u from Hcuser u where u.userid = " + userid + " and u.password = '" + pass + "'";
 				Utils<Hcuser> dbu = new Utils<Hcuser>();
+
 				Hcuser user = new Hcuser();
-				try
-				{
+		
 					user = dbu.getResult(qString);
 					
+				
+				user = dbu.getResult(qString);
+					//System.out.println(user.getName());
+				
+				if(user != null)
+				{	
+
 					HttpSession session = request.getSession();
 					session.setAttribute("curuser", user);
 					session.setAttribute("userType", user.getType());
 					nextpage = "/Courses";
 					
 				}
-				catch(Exception e)
+				else
 				{
 					System.out.println("no user found");
 					message = err;
 					nextpage = "/LoginDisp.jsp";
 					
 				}
+
+		
+		
 			}
 		}
-		
-		
-		
 
 		response.setContentType("text/html");
 		request.setAttribute("message", message);

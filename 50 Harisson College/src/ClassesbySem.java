@@ -1,7 +1,13 @@
 
 
 import java.io.IOException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,16 +26,15 @@ public class ClassesbySem extends HttpServlet {
 	
 	private String table = "";
     private String tpresent = "<div class=\"container\">" +
-    "<h2>Courses</h2>" +             
+    "<h2>Classes</h2>" +             
     "<table class=\"table\">" + 
       "<thead>" +
         "<tr>" + 
-          "<th>Course code</th>" +
-          "<th>Course number</th>" + 
-          "<th>Description</th>" + 
-          "<th>Name</th>" + 
-          "<th>Credits</th>" + 
-          "<th>Department</th>" + 
+          "<th>CRN</th>" +
+          "<th>Day/Time</th>" + 
+          "<th>Instructor</th>" + 
+          "<th>Building</th>" + 
+          "<th>Room number</th>" + 
         "</tr>" +
       "</thead>" + 
       "<tbody>";
@@ -55,14 +60,17 @@ public class ClassesbySem extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String search = request.getParameter("search");
+		String sem = request.getParameter("sem");
+		String sub = request.getParameter("subject");
+		String instr = request.getParameter("instr");
+		String curTime = request.getParameter("time");
 		//System.out.println(search);
 	
-		if(search != null)
+		if(sem != null)
 		{
-			if(!search.isEmpty())
+			if(!sem.isEmpty())
 			{
-				String q = "Select c from Hcclass c where c.semester = '" + search +  "'";
+				String q = "Select c from Hcclass c where c.semester = '" + sem +  "' and c.enable = 1";
 				Utils<Hcclass> dbc = new Utils<Hcclass>();
 				List<Hcclass> clist = null;
 				try
@@ -96,6 +104,144 @@ public class ClassesbySem extends HttpServlet {
 			}
 		}
 		
+		//Search by semester and subject
+		
+		if(sem !=null && sub!=null)
+		{
+			if(!sem.isEmpty() && !sub.isEmpty())
+			{
+				//System.out.println("here");
+				String q = "Select c from Hcclass c where c.semester = '" + sem +  "' and c.enable = 1";
+				Utils<Hcclass> dbc = new Utils<Hcclass>();
+				List<Hcclass> clist = null;
+				try
+				{
+					//System.out.println("here");
+					clist = dbc.getList(q);
+					//System.out.println("here2");
+					crn = "";
+				    time = "";
+				    inst = "";
+				    building = "";
+				    room = "";
+					for(Hcclass cur: clist)
+					{
+						if(cur.getHccourse().getSubjectcode().equalsIgnoreCase(sub))
+						{
+							crn += cur.getCrn() + "<br><br>";
+							time += cur.getDaytime() + "<br><br>";
+							inst += cur.getHcuser().getName() + "<br><br>";
+							building += cur.getHcclassroom().getBldgname() + "<br><br>";
+							room += cur.getHcclassroom().getRoom() + "<br><br>";
+						}	
+					}
+					
+					table = tpresent;
+				}
+				catch(Exception e)
+				{
+					System.out.println("no list in class by semester");
+					table = "";
+				}
+			}
+		}
+		
+		
+		//Search by semester and instructor
+		
+		if(sem !=null && instr!=null)
+		{
+			if(!sem.isEmpty() && !instr.isEmpty())
+			{
+				
+				String q = "Select c from Hcclass c where c.semester = '" + sem +  "' and c.enable = 1";
+				Utils<Hcclass> dbc = new Utils<Hcclass>();
+				List<Hcclass> clist = null;
+				try
+				{
+					//System.out.println("here");
+					clist = dbc.getList(q);
+					//System.out.println("here2");
+					crn = "";
+				    time = "";
+				    inst = "";
+				    building = "";
+				    room = "";
+					for(Hcclass cur: clist)
+					{
+						if(cur.getHcuser().getName().equalsIgnoreCase(instr))
+						{
+							crn += cur.getCrn() + "<br><br>";
+							time += cur.getDaytime() + "<br><br>";
+							inst += cur.getHcuser().getName() + "<br><br>";
+							building += cur.getHcclassroom().getBldgname() + "<br><br>";
+							room += cur.getHcclassroom().getRoom() + "<br><br>";
+						}	
+					}
+					
+					table = tpresent;
+				}
+				catch(Exception e)
+				{
+					System.out.println("no list in class by semester");
+					table = "";
+				}
+			}
+		}
+		
+		
+		
+		
+		//search by time
+		
+		if(curTime != null)
+		{
+			if(!curTime.isEmpty())
+			{
+				String q = "Select c from Hcclass c where c.enable = 1";
+				Utils<Hcclass> dbc = new Utils<Hcclass>();
+				List<Hcclass> clist = null;
+				clist = dbc.getList(q);
+				
+				if(clist != null)
+				{	
+					crn = "";
+				    time = "";
+				    inst = "";
+				    building = "";
+				    room = "";
+					for(Hcclass cur: clist)
+					{
+						String daytime = cur.getDaytime();
+						String[] times = getTimes(daytime);
+						String sTime = times[0];
+						String eTime = times[1];
+						boolean res = inWindow(sTime, eTime, curTime);
+						if(res)
+						{
+							crn += cur.getCrn() + "<br><br>";
+							time += cur.getDaytime() + "<br><br>";
+							inst += cur.getHcuser().getName() + "<br><br>";
+							building += cur.getHcclassroom().getBldgname() + "<br><br>";
+							room += cur.getHcclassroom().getRoom() + "<br><br>";
+						}	
+					}
+					
+					table = tpresent;
+				}	
+			
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -109,6 +255,8 @@ public class ClassesbySem extends HttpServlet {
 		request.setAttribute("table", table);
 		getServletContext().getRequestDispatcher("/ClassesbySemDisp.jsp")
 		.forward(request, response);
+		
+		
 	}
 
 	/**
@@ -117,6 +265,51 @@ public class ClassesbySem extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	public  String[] getTimes(String s)
+	{
+		String[] tokens = s.split(" ");
+		
+		String temp = tokens[1];
+		
+		String [] tokens2 = temp.split("-");
+		
+		return tokens2;
+	}
+	
+	public boolean inWindow(String sTime, String eTime, String curTime)
+	{
+		boolean result = false;
+		
+		SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+		Date ten = null;
+		try {
+			ten = parser.parse(sTime);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Date eighteen = null;
+		try {
+			eighteen = parser.parse(eTime);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String someOtherDate = curTime;
+		
+		try {
+		    Date userDate = parser.parse(someOtherDate);
+		    if (userDate.after(ten) && userDate.before(eighteen)) {
+		    	result = true;
+		    }
+		    
+		} catch (ParseException e) {
+		    // Invalid date was entered
+			//System.out.println("no");
+		}
+		return result;
 	}
 
 }

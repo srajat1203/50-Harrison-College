@@ -10,16 +10,81 @@
 </head>
 <body>
 
+<h3>Search options</h3>
+<br><br>
+
 <div class="container">
-  <h2>Select Semester</h2>
-  <form role="form" action = "ClassesbySem" method="post">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
     <div class="form-group">
-      <label for="search">Semester</label>
-      <input type="text" class="form-control" id="search" name="search" placeholder="Enter sem. E.g 'fall 2011'">
+      <label for="sem">Semester</label>
+      <input type="text" class="form-control" id="sem" name="sem" placeholder="Enter Semester">
     </div>
-    <button type="submit" class="btn btn-default">Search</button>
+    <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
+<br><br>
+
+
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="sem">Semester</label>
+      <input type="text" class="form-control" id="sem" name="sem" placeholder="Enter Semester">
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+    </div>
+    
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
+
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="sem">Semester</label>
+      <input type="text" class="form-control" id="sem" name="sem" placeholder="Enter Semester">
+    </div>
+    <div class="form-group">
+      <label for="instr">Instructor</label>
+      <input type="text" class="form-control" id="instr" name="instr" placeholder="Enter instructor">
+    </div>
+    
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
+
+
+
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="time">Time</label>
+      <input type="text" class="form-control" id="time" name="time" placeholder="Enter time (HH:mm)">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
+
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="dept">Department</label>
+      <input type="text" class="form-control" id="dept" name="dept" placeholder="Enter Department name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
+
 
 	${table}
       <tr>
