@@ -39,7 +39,6 @@ public class ClassesbySem extends HttpServlet {
       "</thead>" + 
       "<tbody>";
 
-    
     private String crn = "";
     private String time = "";
     private String inst = "";
