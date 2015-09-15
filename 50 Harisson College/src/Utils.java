@@ -7,6 +7,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 
+
+
 import customTools.DBUtil;
 
 public class Utils<T> {
@@ -57,6 +59,7 @@ public class Utils<T> {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public List<T> getList( String nString)
 	{
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -74,7 +77,8 @@ public class Utils<T> {
 			doneitems = (List<T>) temp_doneitems;
 		}
 		catch(Exception e){
-			System.out.println("err with gettin list from db");
+			System.out.println("err with gettin list");
+			trans.rollback();
 		}
 		finally{
 			em.close();	
@@ -85,6 +89,7 @@ public class Utils<T> {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public T getResult( String nString)
 	{
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -102,7 +107,8 @@ public class Utils<T> {
 			doneitem =  (T) temp_doneitem;
 		}
 		catch(Exception e){
-			System.out.println("err with gettin list from db");
+			System.out.println("err with gettin single result");
+			trans.rollback();
 		}
 		finally{
 			em.close();	
