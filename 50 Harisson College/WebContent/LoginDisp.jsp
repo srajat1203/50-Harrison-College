@@ -29,10 +29,7 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 
-	<br>
-   <form role="form" action = "Findallmajors" method="post">	
-	<button type="submit" class="btn btn-default">Create User</button>
-  </form>
+	
 
 
 </div>
