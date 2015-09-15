@@ -41,6 +41,9 @@ public class Courses extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String searchdept = request.getParameter("dept");
+		//System.out.println("dept " + dept);
+		
 		Utils<Hccourse> dbcourse = new Utils<Hccourse>(); 
 		List<Hccourse> courses = null;
 		String q = "Select c from Hccourse c where c.enable = 1";
@@ -57,19 +60,47 @@ public class Courses extends HttpServlet {
 			cname = "";
 			
 			
-			for(Hccourse cur: courses)
+			if(searchdept != null)
 			{
-				Hcdept curdept = cur.getHcdept();
+				if(!searchdept.isEmpty())
+				{
+					for(Hccourse cur: courses)
+					{
+						if(cur.getHcdept().getName().equalsIgnoreCase(searchdept))
+						{
+							Hcdept curdept = cur.getHcdept();
+							
+							code += cur.getSubjectcode() + "<br><br>";
+							num += cur.getCoursenum() + "<br><br>";
+							desc += cur.getDescr() + "<br><br>";
+							name += cur.getName() + "<br><br>";
+							credits += cur.getCredits() + "<br><br>";
+							dept += curdept.getName() + "<br><br>";
+						}
+						
+					}
+				}	
+			}	
+			
 				
-				code += cur.getSubjectcode() + "<br><br>";
-				num += cur.getCoursenum() + "<br><br>";
-				desc += cur.getDescr() + "<br><br>";
-				name += cur.getName() + "<br><br>";
-				credits += cur.getCredits() + "<br><br>";
-				dept += curdept.getName() + "<br><br>";
-				
-				
+			else
+			{
+				for(Hccourse cur: courses)
+				{	
+					Hcdept curdept = cur.getHcdept();
+					code += cur.getSubjectcode() + "<br><br>";
+					num += cur.getCoursenum() + "<br><br>";
+					desc += cur.getDescr() + "<br><br>";
+					name += cur.getName() + "<br><br>";
+					credits += cur.getCredits() + "<br><br>";
+					dept += curdept.getName() + "<br><br>";
+				}
 			}
+				
+				
+				
+				
+			
 		}
 		catch(Exception e)
 		{
