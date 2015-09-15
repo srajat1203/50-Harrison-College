@@ -63,6 +63,7 @@ public class ClassesbySem extends HttpServlet {
 		String sem = request.getParameter("sem");
 		String sub = request.getParameter("subject");
 		String instr = request.getParameter("instr");
+		String curTime = request.getParameter("time");
 		//System.out.println(search);
 	
 		if(sem != null)
@@ -188,55 +189,49 @@ public class ClassesbySem extends HttpServlet {
 			}
 		}
 		
+		
+		
+		
 		//search by time
 		
-		/*
-		
-		SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
-		Date ten = null;
-		try {
-			ten = parser.parse("10:00");
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if(curTime != null)
+		{
+			if(!curTime.isEmpty())
+			{
+				String q = "Select c from Hcclass c where c.enable = 1";
+				Utils<Hcclass> dbc = new Utils<Hcclass>();
+				List<Hcclass> clist = null;
+				clist = dbc.getList(q);
+				
+				if(clist != null)
+				{	
+					crn = "";
+				    time = "";
+				    inst = "";
+				    building = "";
+				    room = "";
+					for(Hcclass cur: clist)
+					{
+						String daytime = cur.getDaytime();
+						String[] times = getTimes(daytime);
+						String sTime = times[0];
+						String eTime = times[1];
+						boolean res = inWindow(sTime, eTime, curTime);
+						if(res)
+						{
+							crn += cur.getCrn() + "<br><br>";
+							time += cur.getDaytime() + "<br><br>";
+							inst += cur.getHcuser().getName() + "<br><br>";
+							building += cur.getHcclassroom().getBldgname() + "<br><br>";
+							room += cur.getHcclassroom().getRoom() + "<br><br>";
+						}	
+					}
+					
+					table = tpresent;
+				}	
+			
+			}
 		}
-		Date eighteen = null;
-		try {
-			eighteen = parser.parse("18:00");
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String someOtherDate = "23:59";
-		
-		try {
-		    Date userDate = parser.parse(someOtherDate);
-		    if (userDate.after(ten) && userDate.before(eighteen)) {
-		        System.out.println("yes");
-		    }
-		    else
-		    {
-		    	System.out.println("no in window");
-		    }
-		} catch (ParseException e) {
-		    // Invalid date was entered
-			System.out.println("no");
-		}
-		
-		*/
-		
-		String s = "MWF 08:00-08:50";
-		
-		String[] tokens = s.split(" ");
-		
-		String temp = tokens[1];
-		
-		String [] tokens2 = temp.split("-");
-		
-		String sDate = tokens2[0];
-		String eDate = tokens2[1];
-		
-		System.out.println (sDate + " " + eDate);
 		
 		
 		
@@ -247,7 +242,9 @@ public class ClassesbySem extends HttpServlet {
 		
 		
 		
-		/*
+		
+		
+		
 		response.setContentType("text/html");
 		
 		request.setAttribute("crn", crn);
@@ -258,7 +255,7 @@ public class ClassesbySem extends HttpServlet {
 		request.setAttribute("table", table);
 		getServletContext().getRequestDispatcher("/ClassesbySemDisp.jsp")
 		.forward(request, response);
-		*/
+		
 		
 	}
 
@@ -268,6 +265,51 @@ public class ClassesbySem extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	public  String[] getTimes(String s)
+	{
+		String[] tokens = s.split(" ");
+		
+		String temp = tokens[1];
+		
+		String [] tokens2 = temp.split("-");
+		
+		return tokens2;
+	}
+	
+	public boolean inWindow(String sTime, String eTime, String curTime)
+	{
+		boolean result = false;
+		
+		SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+		Date ten = null;
+		try {
+			ten = parser.parse(sTime);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Date eighteen = null;
+		try {
+			eighteen = parser.parse(eTime);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String someOtherDate = curTime;
+		
+		try {
+		    Date userDate = parser.parse(someOtherDate);
+		    if (userDate.after(ten) && userDate.before(eighteen)) {
+		    	result = true;
+		    }
+		    
+		} catch (ParseException e) {
+		    // Invalid date was entered
+			//System.out.println("no");
+		}
+		return result;
 	}
 
 }

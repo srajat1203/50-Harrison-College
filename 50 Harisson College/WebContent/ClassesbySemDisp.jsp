@@ -59,6 +59,22 @@
 <br><br>
 
 
+
+
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="time">Time</label>
+      <input type="text" class="form-control" id="time" name="time" placeholder="Enter time (HH:mm)">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
+
+
+
 	${table}
       <tr>
         <td>${crn}</td>
