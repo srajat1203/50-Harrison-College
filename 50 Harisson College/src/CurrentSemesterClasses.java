@@ -40,11 +40,9 @@ public class CurrentSemesterClasses extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		currentClasses = "";
-		HttpSession session = request.getSession();
-		//Hcuser user = (Hcuser) session.getAttribute("user");
+	HttpSession session = request.getSession();
 		
-		Hcuser user = new  Hcuser();
-		user = DBUtil.selectuser(7);
+		Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
 		
 	

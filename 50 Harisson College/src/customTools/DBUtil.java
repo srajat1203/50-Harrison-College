@@ -16,7 +16,27 @@ public class DBUtil {
 	private static final EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("50 Harisson College");
 
-	
+	public static List<Hcenrolledclass> getStudentTranscript(Hcuser hcuser) {
+		System.out.println("in db get transcript ");
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcenrolledclass h WHERE h.hcuser=:hcuser ORDER BY h.semester DESC";
+		System.out.println(query);
+		List<Hcenrolledclass> studentGrades = null;
+		System.out.println(query);
+
+		TypedQuery<Hcenrolledclass> q = em.createQuery(query, Hcenrolledclass.class);
+		q.setParameter("hcuser", hcuser);
+		try {
+			System.out.println("in try");
+			studentGrades = q.getResultList();
+			System.out.println(studentGrades.get(0).getHcuser().getName());
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return studentGrades;
+	}
 	
 	public static void updateGrad(Hcenrolledclass enrollment) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();

@@ -16,8 +16,11 @@
 <% if (session.getAttribute("curuser") == null) { %>
 <li><a href="CreateUser.jsp">Signup</a></li>
 <li><a href="LoginDisp.jsp">Login</a></li>
+</ul>
 <% } else { %>
 <li><a href="Login?logout=true">Logout</a></li>
+</ul>
+<ul class="nav navbar-nav">
 <li><a href="CourseDisp.jsp">View Courses</a>
 <li><a href="ClassesbySemDisp.jsp">Available Classes</a>
 <% if(session.getAttribute("userType").equals(1)){%>
@@ -27,7 +30,7 @@
 <li><a href="CurrentSemesterClasses.jsp">Your Classes</a>
 <li><a href="GradeSheets.jsp">Grade Sheets</a></li>
 <%} else { if(session.getAttribute("userType").equals(3)){%>
-<li><a href="">Advisors</a>
+<li><a href="Transcripts.jsp">Transcripts</a>
 <%}else { if(session.getAttribute("userType").equals(4)){%>
 <li><a href="">Administrators</a>
 <%} } } }}%>

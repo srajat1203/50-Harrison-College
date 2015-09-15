@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Hcclass;
 import model.Hcuser;
@@ -42,8 +43,9 @@ public class RosterOfStudents extends HttpServlet {
 		System.out.println("xxx");
 		String semster = request.getParameter("semester");
 		System.out.println("the semester" +semster);
-		Hcuser user = new  Hcuser();
-		user = DBUtil.selectuser(7);
+		HttpSession session = request.getSession();
+		
+		Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
 
 		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user, semster);

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
 import customTools.DBUtil;
@@ -43,8 +44,9 @@ public class GradeSheets extends HttpServlet {
 		String semster = request.getParameter("semester");
 if(request.getParameter("semester") != null)
 {
-		Hcuser user = new  Hcuser();
-		user = DBUtil.selectuser(7);
+	HttpSession session = request.getSession();
+	
+	Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
 
 		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user, semster);
