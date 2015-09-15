@@ -16,6 +16,8 @@ public class DBUtil {
 	private static final EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("50 Harisson College");
 
+	
+	
 	public static void updateGrad(Hcenrolledclass enrollment) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();

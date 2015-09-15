@@ -60,10 +60,10 @@ public class Login extends HttpServlet {
 				try
 				{
 					user = dbu.getResult(qString);
-					//System.out.println(user.getName());
 					
 					HttpSession session = request.getSession();
 					session.setAttribute("curuser", user);
+					session.setAttribute("userType", user.getType());
 					nextpage = "/Courses";
 					
 				}
