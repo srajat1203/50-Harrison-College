@@ -35,7 +35,7 @@ public class Findallmajors extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String qString = "select u from Hcmojor u";
+		String qString = "select u from Hcmojor u where u.enable = 1";
 		Utils<Hcmojor> dbm = new Utils<Hcmojor>();
 		List<Hcmojor> majors = new ArrayList<Hcmojor>();
 		

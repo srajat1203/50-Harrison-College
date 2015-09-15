@@ -43,7 +43,7 @@ public class Courses extends HttpServlet {
 		
 		Utils<Hccourse> dbcourse = new Utils<Hccourse>(); 
 		List<Hccourse> courses = null;
-		String q = "Select c from Hccourse c";
+		String q = "Select c from Hccourse c where c.enable = 1";
 		try
 		{
 			courses = dbcourse.getList(q);
