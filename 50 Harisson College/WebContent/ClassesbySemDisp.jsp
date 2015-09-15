@@ -73,6 +73,17 @@
 <br><br>
 
 
+<div class="container">
+  <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    <div class="form-group">
+      <label for="dept">Department</label>
+      <input type="text" class="form-control" id="dept" name="dept" placeholder="Enter Department name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<br><br>
+
 
 
 	${table}
