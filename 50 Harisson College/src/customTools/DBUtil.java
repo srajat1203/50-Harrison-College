@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -15,10 +16,44 @@ public class DBUtil {
 	private static final EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("50 Harisson College");
 
-	public static List<Hcenrolledclass> rosterOfStudent(Hcclass hcclass) {
+	public static void updateGrad(Hcenrolledclass enrollment) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		try {
+			em.merge(enrollment);
+			trans.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			// trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	
+	
+	public static Hcenrolledclass selectenrollment(long id) {
+		System.out.println("in db enrollment " +id);
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcenrolledclass h WHERE h.id =" +id ;
+		System.out.println(query);
+		TypedQuery<Hcenrolledclass> q = em.createQuery(query, Hcenrolledclass.class);
+		Hcenrolledclass returnenrolledclass = null;
+		try {
+			System.out.println("in try class");
+			returnenrolledclass = q.getSingleResult();
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return returnenrolledclass;
+	}
+	
+	public static List<Hcenrolledclass> rosterOfStudent(Hcclass hcclass, String semester) {
 		System.out.println("in db roster of student for this class "+hcclass.getCrn());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String query = "SELECT h FROM Hcenrolledclass h WHERE h.hcclass=:hcclass";
+		String query = "SELECT h FROM Hcenrolledclass h WHERE h.hcclass=:hcclass and h.semester='"+semester+"'";
 		System.out.println(query);
 		List<Hcenrolledclass> students = null;
 		System.out.println(query);
