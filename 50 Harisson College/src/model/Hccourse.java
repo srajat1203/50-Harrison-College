@@ -21,9 +21,9 @@ public class Hccourse implements Serializable {
 	@Id
 	private long id;
 
-	private BigDecimal coursenum;
+	private int coursenum;
 
-	private BigDecimal credits;
+	private double credits;
 
 	private String descr;
 
@@ -54,19 +54,19 @@ public class Hccourse implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getCoursenum() {
+	public int getCoursenum() {
 		return this.coursenum;
 	}
 
-	public void setCoursenum(BigDecimal coursenum) {
+	public void setCoursenum(int coursenum) {
 		this.coursenum = coursenum;
 	}
 
-	public BigDecimal getCredits() {
+	public double getCredits() {
 		return this.credits;
 	}
 
-	public void setCredits(BigDecimal credits) {
+	public void setCredits(double credits) {
 		this.credits = credits;
 	}
 

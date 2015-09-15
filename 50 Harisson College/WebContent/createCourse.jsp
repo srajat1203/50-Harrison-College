@@ -11,29 +11,82 @@
 
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
-<title>Welcome to Tian Mao!</title>
+<title>Welcome to Stanford University!</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-	<table class="table table-striped">
-	<thead><tr><th>Course Num</th><th>Credits</th><th>Enable</th><th>Subject Code</th><th>Name</th><th>Dept</th></tr></thead>
- 	<c:forEach var="c" items="${courses}">
-		<tr>
-			<td>${c.coursenum}</td>
-			<td>${c.credits}</td>
-			<td>${c.enable}</td>
-			<td>${c.subjectcode}</td>
-			<td>${c.name}</td>
-			<td>${c.hcdept.name}</td>
-			<td><a href = "EditCourseServlet?coursenum=${c.coursenum}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
-			<c:if test="${c.enable eq 1}"><a href = "DisableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Disable</button></a></c:if>
-			<c:if test="${c.enable eq 0}"><a href = "EnableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Enable</button></a></c:if></td>
-		</tr>
-	</c:forEach> 
-	</table>
-<br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "createCourse.jsp"><button type="button" class="btn pull-left btn-info btn-lg">Create a course</button></a>
-<br>
+<!-- create a new account -->
+	<div class="container">
+		<div class="container">
+			<div class="jumbotron other-color">
+				<center>
+					<h1>Create a new course</h1>
+				</center>
+			</div>
+		</div>
+		<form class="form-horizontal" role="myForm" action="SubmitCourseServlet" onsubmit="return validateForm()" method="post">
+			<div class="form-group">
+				<label class="control-label col-sm-5">Course Name :</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="coursename"
+						name="coursename">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-5">Course Number :</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="coursenumber"
+						name="coursenumber">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-5">Subject Code :</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="subjectcode"
+						name="subjectcode">
+				</div>
+			</div>			
+			
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="class">Description :</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="description" name="description"
+						placeholder="at least 6 characters">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="assignment">Credits: </label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="credits"
+						name="credits">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="assignment">Department: </label>
+				<div class="col-sm-5">
+				<select name="dept" class="form-control">
+					<c:forEach var="c" items="${depts}">
+					<option value="${c.id}">${c.name}</option>
+                	</c:forEach>
+       	 		</select>
+       	 		</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-5">
+					<center>
+						<button type="submit" class="btn btn-primary btn-lg btn-block"
+							value="addstudent">Create Course</button>
+					</center>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
