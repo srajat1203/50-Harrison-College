@@ -63,6 +63,7 @@ public class ClassesbySem extends HttpServlet {
 		String sub = request.getParameter("subject");
 		String instr = request.getParameter("instr");
 		String curTime = request.getParameter("time");
+		String dept = request.getParameter("dept");
 		//System.out.println(search);
 	
 		if(sem != null)
@@ -229,6 +230,50 @@ public class ClassesbySem extends HttpServlet {
 					table = tpresent;
 				}	
 			
+			}
+		}
+		
+		
+		//search by dept
+		
+		System.out.println(dept);
+		if(sem !=null && dept!=null)
+		{
+			if(!sem.isEmpty() && !dept.isEmpty())
+			{
+				
+				String q = "Select c from Hcclass c where c.semester = '" + sem +  "' and c.enable = 1";
+				Utils<Hcclass> dbc = new Utils<Hcclass>();
+				List<Hcclass> clist = null;
+				try
+				{
+					//System.out.println("here");
+					clist = dbc.getList(q);
+					//System.out.println("here2");
+					crn = "";
+				    time = "";
+				    inst = "";
+				    building = "";
+				    room = "";
+					for(Hcclass cur: clist)
+					{
+						if(cur.getHccourse().getHcdept().getName().equalsIgnoreCase(dept))
+						{
+							crn += cur.getCrn() + "<br><br>";
+							time += cur.getDaytime() + "<br><br>";
+							inst += cur.getHcuser().getName() + "<br><br>";
+							building += cur.getHcclassroom().getBldgname() + "<br><br>";
+							room += cur.getHcclassroom().getRoom() + "<br><br>";
+						}	
+					}
+					
+					table = tpresent;
+				}
+				catch(Exception e)
+				{
+					System.out.println("no list in class by semester");
+					table = "";
+				}
 			}
 		}
 		
