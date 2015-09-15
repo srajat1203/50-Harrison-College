@@ -22,12 +22,12 @@
 
 <a href="./classbyinstructor.jsp"
  class="btn btn-default">classbyinstructor</a>
- <a href="./getinstructor.jsp"
- class="btn btn-default">getinstructor</a>
-  <a href="./getinstructor.jsp"
- class="btn btn-default">3</a>
-   <a href="./4.jsp"
- class="btn btn-default">4</a>
+ <a href="./getclassroom.jsp"
+ class="btn btn-default">getclassroom</a>
+  <a href="./Viewallcourse"
+ class="btn btn-default">view all courses</a>
+   <a href="./roombyinstructor.jsp"
+ class="btn btn-default">roombyinstructor</a>
  
  
 </div>

@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
+
 import java.util.List;
 
 
@@ -18,14 +18,14 @@ public class Hccourse implements Serializable {
 	@Id
 	private long id;
 
-	private BigDecimal coursenum;
+	private int coursenum;
 
-	private BigDecimal credits;
+	private int credits;
 
 	private String descr;
 
 	@Column(name="\"ENABLE\"")
-	private BigDecimal enable;
+	private int enable;
 
 	private String name;
 
@@ -51,19 +51,19 @@ public class Hccourse implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getCoursenum() {
+	public int getCoursenum() {
 		return this.coursenum;
 	}
 
-	public void setCoursenum(BigDecimal coursenum) {
+	public void setCoursenum(int coursenum) {
 		this.coursenum = coursenum;
 	}
 
-	public BigDecimal getCredits() {
+	public int getCredits() {
 		return this.credits;
 	}
 
-	public void setCredits(BigDecimal credits) {
+	public void setCredits(int credits) {
 		this.credits = credits;
 	}
 
@@ -75,11 +75,11 @@ public class Hccourse implements Serializable {
 		this.descr = descr;
 	}
 
-	public BigDecimal getEnable() {
+	public int getEnable() {
 		return this.enable;
 	}
 
-	public void setEnable(BigDecimal enable) {
+	public void setEnable(int enable) {
 		this.enable = enable;
 	}
 

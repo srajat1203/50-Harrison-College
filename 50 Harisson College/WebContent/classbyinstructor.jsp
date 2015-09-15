@@ -39,12 +39,15 @@
 
 <table>
 <c:forEach var="item" items="${list}">
-	<thread><tr><th>crn</th><th>daytime</th><th>semester</th></tr></thread>
+	<thread><tr><th>crn</th><th>daytime</th><th>semester</th><th>instructorid</th><th>classroomnum</th><th>courseid</th><th>enable</th></tr></thread>
     <tr>
     	<td>${item.crn}</td>
     	<td>${item.daytime}</td>
     	<td>${item.semester}</td>
-    	
+    	<td>${item.hcuser.userid}</td>
+        <td>${item.hcclassroom.id}</td>
+        <td>${item.hccourse.id}</td>
+        <td>${item.enable}</td>
     </tr>
 </c:forEach>
 </table>

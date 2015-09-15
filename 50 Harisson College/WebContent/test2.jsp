@@ -16,9 +16,18 @@
 
 <table>
 <c:forEach var="item" items="${course.hcclasses}">
-    	<p>1${item.hcclassroom.bldgname}</p>
+    	
+    	<thread><tr><th>classroomid</th><th>bldgname</th><th>room</th><th>maxcap</th></tr></thread>
+    	<tr>
+    	       <td>${item.hcclassroom.id}</td>
+    	      <td>${item.hcclassroom.bldgname}</td>
+    	      <td>${item.hcclassroom.room}</td>
+    	      <td>${item.hcclassroom.maxcap}</td>
+    	 </tr>
 </c:forEach>
 </table>
+
+
 
 
 

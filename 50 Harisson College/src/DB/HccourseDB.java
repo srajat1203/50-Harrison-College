@@ -71,6 +71,34 @@ public class HccourseDB {
 	
 	
 	}
+	
+	
+	public static List<Hccourse> getAllCourse()
+	{
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		//String queryStr = "SELECT p FROM Hccourse p  ORDER BY p.productName";
+		String queryStr = "SELECT p FROM Hccourse p";
+		List<Hccourse> hccourse = null;
+		try
+		{
+			Query query = em.createQuery(queryStr);
+			hccourse =  query.getResultList();
+			System.out.println("size = " + hccourse.size());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			em.close();
+		}
+		return hccourse;
+	}
+	
+	
+	
+	
 }
 	
 	

@@ -16,13 +16,13 @@
 
 
 <h2>input crnid</h2>
-  <form class="form-horizontal" role="form" action="Getcourse" method="post">
+  <form class="form-horizontal" role="form" action="test2" method="post">
    
   
   <div class="form-group">
-      <label class="control-label col-sm-2" for="crnid">crnid:</label>
+      <label class="control-label col-sm-2" for="courseid">courseid:</label>
       <div class="col-sm-10">          
-        <input type="text" class="form-control" id="crnid" placeholder="Enter crnid" name="crnid">
+        <input type="text" class="form-control" id="courseid" placeholder="Enter courseid" name="courseid">
       </div>
       
     
