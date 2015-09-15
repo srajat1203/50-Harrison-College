@@ -46,8 +46,7 @@ public class CurrentSemesterClasses extends HttpServlet {
 		System.out.println(user.getName());
 		
 	
-		String semester = "fall 2015";
-		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user, semester);
+		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user);
 		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) {
 			currentClasses +="<table class=\"table\"><thead><tr><th width=\"30%\">Course</th><th width=\"30%\">Name</th><th width=\"30%\">Classroom</th><th width=\"10%\">Semester</th></tr></thead><tbody>";
 

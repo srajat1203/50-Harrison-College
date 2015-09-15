@@ -49,7 +49,7 @@ if(request.getParameter("semester") != null)
 	Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
 
-		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user, semster);
+		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user, semster);
 
 		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) {
 			sheet += " <table class=\"table\"> <thead>  <tr>     <th>Class CRN</th>     <th>Course</th>   <th>Student</th>    <th>Grade</th> </tr>   </thead>  <tbody>";

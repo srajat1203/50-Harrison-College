@@ -48,7 +48,7 @@ public class RosterOfStudents extends HttpServlet {
 		Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
 
-		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorForCurrentSemester(user, semster);
+		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user, semster);
 		Roster += "<ul>";
 		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) {
 			for (int i = 0; i < instrocturCurrentClasses.size(); i++) {

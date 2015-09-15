@@ -134,10 +134,31 @@ public class DBUtil {
 		return user;
 	}	
 	
-	public static List<Hcclass> selectClassesByInstroctorForCurrentSemester(Hcuser hcuser, String semseter) {
+	public static List<Hcclass> selectClassesByInstroctorForCurrentSemester(Hcuser hcuser) {
 		System.out.println("in db get list " +hcuser.getUserid());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String query = "SELECT h FROM Hcclass h WHERE h.semester='"+semseter+"' and h.hcuser=:hcuser and h.enable = 1";
+		String query = "SELECT h FROM Hcclass h WHERE h.hcuser=:hcuser and h.enable = 1";
+		List<Hcclass> clsess = null;
+		System.out.println(query);
+		TypedQuery<Hcclass> q = em.createQuery(query, Hcclass.class);
+		System.out.println(q);
+		q.setParameter("hcuser", hcuser);
+		try {
+			System.out.println("in try");
+			clsess = q.getResultList();
+			System.out.println(clsess.get(0).getCrn());
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return clsess;
+	}
+	
+	public static List<Hcclass> selectClassesByInstroctorBySemester(Hcuser hcuser, String semseter) {
+		System.out.println("in db get list " +hcuser.getUserid());
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcclass h WHERE h.semester='"+semseter+"' and h.hcuser=:hcuser";
 		List<Hcclass> clsess = null;
 		System.out.println(query);
 		TypedQuery<Hcclass> q = em.createQuery(query, Hcclass.class);
