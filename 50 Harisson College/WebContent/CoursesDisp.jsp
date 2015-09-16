@@ -50,6 +50,16 @@
   </form>
 </div>
   
+  
+  
+<div class="container" >
+  <form class="form-inline" role="form" action="EnrollDisp.jsp" method="post">
+  
+    <button type="submit" class="btn btn-default">Enroll</button>
+  </form>
+</div>
+
+  
 
 </body>
 </html>
