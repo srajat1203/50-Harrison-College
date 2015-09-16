@@ -47,7 +47,7 @@ public class Enroll extends HttpServlet {
     private String err3 = "<div class=\"alert alert-danger\"> <strong>Error ! </strong> Conflict </div>";
     private String success = "<div class=\"alert alert-success\"> <strong>Success!</strong> New class added </div>";
     
-    private int choice = 1;
+ 
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -63,6 +63,7 @@ public class Enroll extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		int choice = 1;
 		
 		
 		String temp_crn = request.getParameter("crn");
@@ -86,20 +87,15 @@ public class Enroll extends HttpServlet {
 			Hcuser curuser = (Hcuser) session.getAttribute("curuser");
 			List<Hcenrolledclass> classes = getSchedule(curuser);
 			
-			
+			outerloop:
 			for(Hcenrolledclass cur: classes)
 			{
-				if(choice == 0)
-				{
-					break;
-				}
-				
 				if(cur.getHcclass().getCrn() == curclass.getCrn())
 				{
 					//System.out.println("already exists");
 					message = err1;
 					choice = 0;
-					break;
+					break outerloop;
 				}
 				
 				else if(cur.getHcclass().getDaytime().equals(curclass.getDaytime()))
@@ -107,17 +103,17 @@ public class Enroll extends HttpServlet {
 					//System.out.println("exact same daytime, so conflict");
 					message = err2;
 					choice = 0;
-					break;
+					break outerloop;
 				}
 				
 				else if(timeConflict(cur.getHcclass().getDaytime(), curclass.getDaytime()) && dayConflict(cur.getHcclass().getDaytime(), curclass.getDaytime()))
 				{
-					{
-						//System.out.println("Conflict");
-						message = err3;
-						choice = 0;
-						break;
-					}	
+					
+					System.out.println("Conflict");
+					message = err3;
+					choice = 0;
+					break outerloop;
+					
 				}
 				
 				
