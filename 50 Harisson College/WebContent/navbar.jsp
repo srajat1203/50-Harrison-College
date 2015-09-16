@@ -37,6 +37,7 @@
  	if (session.getAttribute("userType").equals(1)) {
  %>
 	<li><a href="CurrentSchedule">My Schedule</a></li>
+		<li><a href="">Enroll in Class</a></li>
             <li><a href="Transcripts">Unofficial Transcript</a></li>
             <li><a href="OrderTrans.jsp">Order Official Transcript</a></li>
        
@@ -52,7 +53,8 @@
 						} else {
 									if (session.getAttribute("userType").equals(3)) {
 					%>
-					<li><a href="Transcripts.jsp">Transcripts</a> <%
+					<li><a href="Transcripts.jsp">Transcripts</a> 
+					<li><a href="">Enroll Student</a></li><%
  	} else {
  					if (session.getAttribute("userType").equals(4)) {
  %>
