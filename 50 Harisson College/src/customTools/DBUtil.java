@@ -38,6 +38,28 @@ public class DBUtil {
 		return studentGrades;
 	}
 	
+	public static long getCurrentCapacity(Hcclass hcclass)
+	{
+		long cap =0;
+		System.out.println("in db get getCurrentCapacity " + hcclass.getCrn());
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT COUNT(h.id) FROM Hcenrolledclass h WHERE h.hcclass=:hcclass";
+		System.out.println(query);
+		TypedQuery<Long> q = em.createQuery(query, Long.class);
+		
+		q.setParameter("hcclass", hcclass);
+		try {
+			System.out.println("in try");
+			cap = q.getSingleResult();
+			System.out.println("Cap is "+ cap);
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return cap ;
+	}	
+	
 	public static List<Hcclass> getStudentSchedule(Hcuser hcuser) {
 		System.out.println("in db get Schedule " +hcuser.getName());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -99,6 +121,29 @@ public class DBUtil {
 		System.out.println("in db roster of student for this class "+hcclass.getCrn());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String query = "SELECT h FROM Hcenrolledclass h WHERE h.hcclass=:hcclass and h.semester='"+semester+"'";
+		System.out.println(query);
+		List<Hcenrolledclass> students = null;
+		System.out.println(query);
+
+		TypedQuery<Hcenrolledclass> q = em.createQuery(query, Hcenrolledclass.class);
+		q.setParameter("hcclass", hcclass);
+		try {
+			System.out.println("in try");
+			students = q.getResultList();
+			System.out.println(students.get(0).getHcuser().getName());
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return students;
+	}
+	
+	
+	public static List<Hcenrolledclass> rosterOfStudent(Hcclass hcclass) {
+		System.out.println("in db roster of student for this class "+hcclass.getCrn());
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcenrolledclass h WHERE h.hcclass=:hcclass  ORDER BY h.hcclass DESC";
 		System.out.println(query);
 		List<Hcenrolledclass> students = null;
 		System.out.println(query);
@@ -182,6 +227,26 @@ public class DBUtil {
 		System.out.println("in db get list " +hcuser.getUserid());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String query = "SELECT h FROM Hcclass h WHERE h.semester='"+semseter+"' and h.hcuser=:hcuser";
+		List<Hcclass> clsess = null;
+		System.out.println(query);
+		TypedQuery<Hcclass> q = em.createQuery(query, Hcclass.class);
+		System.out.println(q);
+		q.setParameter("hcuser", hcuser);
+		try {
+			System.out.println("in try");
+			clsess = q.getResultList();
+			System.out.println(clsess.get(0).getCrn());
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return clsess;
+	}
+	
+	public static List<Hcclass> selectClassesByInstroctorBySemester(Hcuser hcuser) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcclass h WHERE h.hcuser=:hcuser";
 		List<Hcclass> clsess = null;
 		System.out.println(query);
 		TypedQuery<Hcclass> q = em.createQuery(query, Hcclass.class);
