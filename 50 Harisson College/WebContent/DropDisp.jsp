@@ -10,10 +10,18 @@
 </head>
 <body>
 
+<jsp:include page="navbar.jsp" />
 <div class="container">
 ${message}
   <h2>Drop Class</h2>
   <form role="form" action="Drop" method="post">
+  <div class="form-group" ${ishidden}>
+			<label class="control-label col-sm-2">Student ID</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="student" id="student"
+						placeholder="Enter Student ID">
+			</div>
+		</div>
     <div class="form-group">
       <label for="crn">CRN</label>
       <input type="number" class="form-control" id="crn" name="crn" placeholder="Enter CRN #">

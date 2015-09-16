@@ -38,6 +38,7 @@
  %>
 	<li><a href="CurrentSchedule">My Schedule</a></li>
 		<li><a href="Enroll">Enroll in Class</a></li>
+		<li><a href="Drop">Drop Class</a></li>
             <li><a href="Transcripts">Unofficial Transcript</a></li>
             <li><a href="OrderTrans.jsp">Order Official Transcript</a></li>
        
@@ -53,7 +54,8 @@
 									if (session.getAttribute("userType").equals(3)) {
 					%>
 					<li><a href="Transcripts.jsp">Transcripts</a> 
-					<li><a href="EnrollDisp.jsp">Enroll Student</a></li><%
+					<li><a href="EnrollDisp.jsp">Enroll Student</a></li>
+					<li><a href="DropDisp.jsp">Drop Student</a></li><%
  	} else {
  					if (session.getAttribute("userType").equals(4)) {
  %>
