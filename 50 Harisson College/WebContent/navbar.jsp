@@ -36,7 +36,7 @@
 					<li><a href="ClassesbySemDisp.jsp">Available Classes</a> <%
  	if (session.getAttribute("userType").equals(1)) {
  %>
-	
+	<li><a href="CurrentSchedule">My Schedule</a></li>
             <li><a href="Transcripts">Unofficial Transcript</a></li>
             <li><a href="OrderTrans.jsp">Order Official Transcript</a></li>
        
