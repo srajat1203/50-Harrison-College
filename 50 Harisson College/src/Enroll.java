@@ -29,6 +29,7 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 import customTools.DBUtil;
 import model.Hcclass;
 import model.Hcenrolledclass;
@@ -45,6 +46,7 @@ public class Enroll extends HttpServlet {
     private String err1 = "<div class=\"alert alert-danger\"> <strong>Error ! </strong> Duplicate crn </div>";
     private String err2 = "<div class=\"alert alert-danger\"> <strong>Error ! </strong> You have another class at same and day </div>";
     private String err3 = "<div class=\"alert alert-danger\"> <strong>Error ! </strong> Conflict </div>";
+    private String err4 = "<div class=\"alert alert-danger\"> <strong>Student ID!</strong> does not exist.</div>";
     private String success = "<div class=\"alert alert-success\"> <strong>Success!</strong> New class added </div>";
     
  
@@ -62,7 +64,22 @@ public class Enroll extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+	
+		Hcuser curuser = new  Hcuser();
+		if(request.getParameter("student")!= null && request.getParameter("student")!="")
+		{
+		long strudentid = Long.parseLong(request.getParameter("student"));
+		curuser = DBUtil.selectuser(strudentid);
+		System.out.println("the strudent id is " + strudentid);
+		}
+		else
+		{	request.setAttribute("ishidden","hidden");
+			HttpSession session = request.getSession();
+			curuser = (Hcuser) session.getAttribute("curuser");
+		}
+		if(curuser.getType()==1)
+		{
+
 		int choice = 1;
 		
 		
@@ -83,8 +100,6 @@ public class Enroll extends HttpServlet {
 		
 		if(curclass != null)
 		{
-			HttpSession session = request.getSession();
-			Hcuser curuser = (Hcuser) session.getAttribute("curuser");
 			List<Hcenrolledclass> classes = getSchedule(curuser);
 			
 			outerloop:
@@ -115,7 +130,10 @@ public class Enroll extends HttpServlet {
 					break outerloop;
 					
 				}
-				
+				else if(true)
+				{
+					//"blabla"
+				}
 				
 			}
 			
@@ -135,14 +153,19 @@ public class Enroll extends HttpServlet {
 			
 		}
 		
-	
+		}
+		else
+		{
+			message = err4;
+		}
+		
 		response.setContentType("text/html");
 		request.setAttribute("message", message);
 		getServletContext().getRequestDispatcher("/EnrollDisp.jsp")
 		.forward(request, response);
 		
+	
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 <div class="container">
- 	<form role="form" action="RosterOfStudents" method="post">
+  	<form role="form" action="RosterOfStudents" method="post" ${ishidden}>
 		<div class="form-group">
 			<label class="control-label col-sm-2">Semester</label>
 			<div class="col-sm-10">
@@ -32,7 +32,7 @@
 				id="Search">Search</button>
 		</div>
 	</div>
-	</form>
+	</form> 
 	${Roster}
 	</div>
 </body>

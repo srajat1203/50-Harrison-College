@@ -42,31 +42,43 @@ public class GradeSheets extends HttpServlet {
 		sheet="";
 		
 		String semster = request.getParameter("semester");
-if(request.getParameter("semester") != null)
-{
+
+	//Hcclass classCRN = DBUtil.selectclass(Long.parseLong(semster));
 	HttpSession session = request.getSession();
 	
 	Hcuser user = (Hcuser) session.getAttribute("curuser");
 		System.out.println(user.getName());
-
-		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user, semster);
-
-		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) {
-			sheet += " <table class=\"table\"> <thead>  <tr>     <th>Class CRN</th>     <th>Course</th>   <th>Student</th>    <th>Grade</th> </tr>   </thead>  <tbody>";
+		List<Hcclass> instrocturCurrentClasses = null; 
+		if(request.getParameter("semester") != null && request.getParameter("semester") != "")
+		{
+		instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user,semster);
+		}
+		else
+		{
+			instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user);
+			request.setAttribute("ishidden","hidden");
+		}
+		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) 
+		{
+			sheet += " <table class=\"table\"> <thead>  <tr>  <th>Course</th>   <th>Student ID</th>  <th>Student Name</th>    <th>Grade</th> </tr>   </thead>  <tbody>";
 
 			for (int i = 0; i < instrocturCurrentClasses.size(); i++) {
-				List<Hcenrolledclass> gradesheet = DBUtil.rosterOfStudent(instrocturCurrentClasses.get(i), semster);
+				List<Hcenrolledclass> gradesheet = DBUtil.rosterOfStudent(instrocturCurrentClasses.get(i));
+				long crn =0;
 				if (gradesheet!= null && !gradesheet.isEmpty()) {
 					for (int j = 0; j < gradesheet.size(); j++) {
+						if(crn != gradesheet.get(i).getHcclass().getCrn())
+						{
+							crn= gradesheet.get(i).getHcclass().getCrn();
+							sheet +="<tr><th colspan=\"4\" align=\"center\"> Class CRN: "+crn+"</th></tr>";
+						}
 						sheet += "<tr><td> "
-								+gradesheet.get(j).getHcclass().getCrn()
-								+"</td><td> " 
 								+gradesheet.get(j).getHcclass().getHccourse().getSubjectcode()+gradesheet.get(j).getHcclass().getHccourse().getCoursenum()
 								+ "  " 
 								+gradesheet.get(j).getHcclass().getHccourse().getName()
 								+"</td><td> " 
 								+gradesheet.get(j).getHcuser().getUserid()
-								+ "  " 
+								+ "</td><td> " 
 								+ gradesheet.get(j).getHcuser().getName()
 								+ "</td><td> "
 								+ gradesheet.get(j).getGrade() 
@@ -74,10 +86,9 @@ if(request.getParameter("semester") != null)
 							}
 				}
 			}
-			
-			sheet += "</tbody></table>";
 		}
-}
+			sheet += "</tbody></table>";
+		
 		request.setAttribute("sheet", sheet);
 		getServletContext().getRequestDispatcher("/GradeSheets.jsp").forward(
 				request, response);

@@ -45,11 +45,12 @@ public class CurrentSchedule extends HttpServlet {
 		List<Hcclass> myschedule = DBUtil.getStudentSchedule(user);
 		
 		if (myschedule != null && !myschedule.isEmpty()) {
-			schedule += " <table class=\"table\"> <thead>  <tr>  <th>Course</th>  <th>Day/ Time</th>   <th>Location</th>  <th>Instroctour</th></tr>   </thead>  <tbody>";
+			schedule += " <table class=\"table\"> <thead>  <tr> <th>CRN</th> <th>Course</th>  <th>Day/ Time</th>   <th>Location</th>  <th>Instroctour</th></tr>   </thead>  <tbody>";
 			
 			for (int i = 0; i < myschedule.size(); i++) {
 			
-				schedule += "<tr><td>"+myschedule.get(i).getHccourse().getSubjectcode()+""+myschedule.get(i).getHccourse().getCoursenum()+" "+myschedule.get(i).getHccourse().getName()+"</td><td>"
+				schedule += "<tr><td>"+ myschedule.get(i).getCrn()
+						+ "</td><td>"+myschedule.get(i).getHccourse().getSubjectcode()+""+myschedule.get(i).getHccourse().getCoursenum()+" "+myschedule.get(i).getHccourse().getName()+"</td><td>"
 						+myschedule.get(i).getDaytime() +"</td><td>"
 						+myschedule.get(i).getHcclassroom().getBldgname()  +" Room #: "+myschedule.get(i).getHcclassroom().getRoom() +"</td><td>"
 						+myschedule.get(i).getHcuser().getName()  +"</td>"

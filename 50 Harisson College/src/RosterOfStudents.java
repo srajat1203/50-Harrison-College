@@ -40,33 +40,48 @@ public class RosterOfStudents extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("xxx");
+		Roster="";
+	
 		String semster = request.getParameter("semester");
-		System.out.println("the semester" +semster);
+
 		HttpSession session = request.getSession();
 		
 		Hcuser user = (Hcuser) session.getAttribute("curuser");
-		System.out.println(user.getName());
+			System.out.println(user.getName());
+			List<Hcclass> instrocturCurrentClasses = null; 
+			if(request.getParameter("semester") != null && request.getParameter("semester") != "")
+			{
+			instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user,semster);
+			}
+			else
+			{
+				instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user);
+				request.setAttribute("ishidden","hidden");
+			}
+		Roster +="<table class=\"table\"><thead><tr><th width=\"30%\">CRN (Rosters of Students)</th><th width=\"30%\">Course</th><th width=\"30%\">Location</th><th width=\"10%\">Semester</th></tr></thead><tbody>";
 
-		List<Hcclass> instrocturCurrentClasses = DBUtil.selectClassesByInstroctorBySemester(user, semster);
-		Roster += "<ul>";
 		if (instrocturCurrentClasses!= null && !instrocturCurrentClasses.isEmpty()) {
 			for (int i = 0; i < instrocturCurrentClasses.size(); i++) {
-				Roster += "<li><a href=\"ListofStudent?classid="+instrocturCurrentClasses.get(i).getCrn()+"&semester="+instrocturCurrentClasses.get(i).getSemester()+"\">"
-						+ instrocturCurrentClasses.get(i).getHccourse().getSubjectcode() +""+instrocturCurrentClasses.get(i).getHccourse().getCoursenum()
-						+" "
+				Roster += "<tr><td><a href=\"ListofStudent?classid="+instrocturCurrentClasses.get(i).getCrn()+"&semester="+instrocturCurrentClasses.get(i).getSemester()+"\">"
+						+ instrocturCurrentClasses.get(i).getCrn() 
+						+" </a></td>"
+						+ "<td>"
+						+instrocturCurrentClasses.get(i).getHccourse().getSubjectcode() +""+instrocturCurrentClasses.get(i).getHccourse().getCoursenum()
+						+ " "
 						+  instrocturCurrentClasses.get(i).getHccourse().getName()
-						+" "
-						+ instrocturCurrentClasses.get(i).getHcclassroom().getBldgname() +" " + instrocturCurrentClasses.get(i).getHcclassroom().getRoom() +" "+instrocturCurrentClasses.get(i).getDaytime() 
-						+" "
+						+"</td>"
+						+ "<td>"
+						+ instrocturCurrentClasses.get(i).getHcclassroom().getBldgname() +" " + instrocturCurrentClasses.get(i).getHcclassroom().getRoom() +"   "+instrocturCurrentClasses.get(i).getDaytime() 
+						+"</td>"
+						+ "<td>"
 						+instrocturCurrentClasses.get(i).getSemester()
-						+ "</a></li>";
+						+ "</td>";
 
 			}
 			
 			
 		}
-		Roster += "</ul>";
+		Roster +="</tbody></table>";
 		request.setAttribute("Roster", Roster);
 		getServletContext().getRequestDispatcher("/RosterOfStudent.jsp").forward(
 				request, response);

@@ -79,6 +79,10 @@ public class ListofStudent extends HttpServlet {
 
 			Roster += "</tbody></table>";
 		}
+		else
+		{
+			Roster += "<div class=\"alert alert-warning\">  <strong>No Students enrolled in this class!</strong></div>";
+		}
 		}
 		request.setAttribute("currentClasses", Roster);
 		getServletContext().getRequestDispatcher("/CurrentSemesterClasses.jsp")

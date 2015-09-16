@@ -25,13 +25,13 @@ ${message}
  		<div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <label for="text">Number of Transcripts:</label>
+      <label for="email">Number of Transcripts:</label>
       <input type="text" class="form-control" id="t_num" name="t_num" onchange="calculate_Total_price(this);">
 </div>
       </div>
         <div class="col-lg-6">
         <div class="input-group">
-       <label for="text">Total: $</label>
+       <label for="email">Total: $</label>
        <input type="text" class="form-control" id="total" name="total" disabled>
 </div>
 </div>

@@ -37,7 +37,7 @@
  	if (session.getAttribute("userType").equals(1)) {
  %>
 	<li><a href="CurrentSchedule">My Schedule</a></li>
-		<li><a href="">Enroll in Class</a></li>
+		<li><a href="Enroll">Enroll in Class</a></li>
             <li><a href="Transcripts">Unofficial Transcript</a></li>
             <li><a href="OrderTrans.jsp">Order Official Transcript</a></li>
        
@@ -45,7 +45,6 @@
  	} else {
  			if (session.getAttribute("userType").equals(2)) {
  %>
-					<li><a href="RosterOfStudent.jsp">Roster of Student</a>
 					<li><a href="RosterOfStudent.jsp">My Classes</a>
 					<li><a href="CurrentSemesterClasses">Current classes</a>
 					<li><a href="GradeSheets.jsp">Grade Sheets</a></li>
@@ -54,7 +53,7 @@
 									if (session.getAttribute("userType").equals(3)) {
 					%>
 					<li><a href="Transcripts.jsp">Transcripts</a> 
-					<li><a href="">Enroll Student</a></li><%
+					<li><a href="EnrollDisp.jsp">Enroll Student</a></li><%
  	} else {
  					if (session.getAttribute("userType").equals(4)) {
  %>
