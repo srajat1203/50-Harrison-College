@@ -22,7 +22,7 @@ public class Hcclass implements Serializable {
 	private String daytime;
 
 	@Column(name="\"ENABLE\"")
-	private BigDecimal enable;
+	private int enable;
 
 	private String semester;
 
@@ -64,11 +64,11 @@ public class Hcclass implements Serializable {
 		this.daytime = daytime;
 	}
 
-	public BigDecimal getEnable() {
+	public int getEnable() {
 		return this.enable;
 	}
 
-	public void setEnable(BigDecimal enable) {
+	public void setEnable(int enable) {
 		this.enable = enable;
 	}
 

@@ -9,8 +9,22 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<jsp:include page="navbar.jsp"/>
 <div class="container">
+
+<div class="container" >
+  <form class="form-inline" role="form" action="Majors" method="post">
+    <div class="form-group">
+      <label for="dept">Department</label>
+      <input type="text" class="form-control" id="dept" name="dept" placeholder="Enter Department name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+  
+  
+ 
+
   <h2>Majors</h2>
   <ul class="list-group">
     <li class="list-group-item">${maj}</li>

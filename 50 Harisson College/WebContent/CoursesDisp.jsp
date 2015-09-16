@@ -40,25 +40,6 @@
 </div>
 
 
-<div class="container" >
-  <form class="form-inline" role="form" action="Courses" method="post">
-    <div class="form-group">
-      <label for="dept">Department</label>
-      <input type="text" class="form-control" id="dept" name="dept" placeholder="Enter Department name">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
-  
-  
-  
-<div class="container" >
-  <form class="form-inline" role="form" action="EnrollDisp.jsp" method="post">
-  
-    <button type="submit" class="btn btn-default">Enroll</button>
-  </form>
-</div>
-
   
 
 </body>
