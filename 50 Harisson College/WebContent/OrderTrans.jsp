@@ -18,9 +18,26 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 <div class="container">
-<!--   <form role="form" action = "PaymentServlet" method ="post">
- 
-   -->
+${message}
+<div  id="formholder" name="formholder"  ${ishidden}>
+   <form role="form" action = "OfficialTranscript" method ="post">
+ <div class="form-group">
+ 		<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <label for="text">Number of Transcripts:</label>
+      <input type="text" class="form-control" id="t_num" name="t_num" onchange="calculate_Total_price(this);">
+</div>
+      </div>
+        <div class="col-lg-6">
+        <div class="input-group">
+       <label for="text">Total: $</label>
+       <input type="text" class="form-control" id="total" name="total" disabled>
+</div>
+</div>
+</div>
+  </div>
+
   <div class="form-group">
   <h2>Card Information</h2>
       <label for="email">Credit Card Number:</label>
@@ -60,8 +77,9 @@
     </label>
 </div>
     <br><br><br>
+        <div id="shipping_address_form_part">
      <h2>Shipping Information</h2>
-    <div id="shipping_address_form_part">
+
       <div class="form-group">
       <label for="email">Shipping Address:</label>
       <input type="text" class="form-control" id="s_address" name="s_address">
@@ -80,10 +98,18 @@
     </div>
  </div>
     <button type="submit" class="btn btn-default" >Submit</button>
-<!--   </form> -->
+  </form> 
+  </div>
 </div>
 
 <script type="text/javascript">
+function calculate_Total_price(text)
+{
+    price = document.getElementById('total');
+    total_price = document.getElementById('t_num');
+    price.value =  total_price.value * 5 ;
+} 
+
 $("input#ship_to_billing_address").prop("checked", true);
 $("#shipping_address_form_part").hide();
 

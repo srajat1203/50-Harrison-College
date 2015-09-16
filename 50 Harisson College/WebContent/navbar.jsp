@@ -8,6 +8,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -21,7 +23,9 @@
 					%>
 					<li><a href="CreateUser.jsp">Signup</a></li>
 					<li><a href="LoginDisp.jsp">Login</a></li>
+					
 				</ul>
+				
 				<%
 					} else {
 				%>
@@ -32,8 +36,10 @@
 					<li><a href="ClassesbySemDisp.jsp">Available Classes</a> <%
  	if (session.getAttribute("userType").equals(1)) {
  %>
-					<li><a href="">Students</a> 
-					<li><a href="Transcripts">View Unofficial Transcript</a>
+	
+            <li><a href="Transcripts">Unofficial Transcript</a></li>
+            <li><a href="OrderTrans.jsp">Order Official Transcript</a></li>
+       
 					<%
  	} else {
  			if (session.getAttribute("userType").equals(2)) {
