@@ -24,9 +24,6 @@ ${message}
   </form>
 
 
-  <form role="form" action="ViewSchedule" method="post">    
-    <button type="submit" class="btn btn-default">View Schedule</button>
-  </form>
 </div>
 
 
