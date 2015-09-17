@@ -1,8 +1,8 @@
 
-
-<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-brand">Harrison College!</div>
+		<div class="navbar-brand"><img  style="max-width:60px; margin-top: -13px;" src="http://diplomaclassics.com/images/Entities/insignia/v2/HacoSealGold_220.png" /></div>
+	
+<nav class="navbar-default" >
+		<div class="container-fluid" >
 			<div>
 				<ul class="nav navbar-nav navbar-right">
 					<%
