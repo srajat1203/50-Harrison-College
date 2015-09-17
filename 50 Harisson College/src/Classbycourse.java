@@ -51,24 +51,9 @@ public class Classbycourse extends HttpServlet {
 		int courseid = Integer.parseInt(request.getParameter("courseid"));
 		
 		Hccourse hccourse=HccourseDB.getCourseByID(courseid);
-		
-		//Hcuser hcuser=HcuserDB.getUserByID(userid);
-		
-	   
-		
+
 		List<Hcclass>list= hccourse.getHcclasses();
-	    
-	    for(int i=0;i<list.size();i++){
-		    Hcclass hcclass=list.get(i);
-			
-		    System.out.println(hcclass.getHcclassroom().getBldgname() +"11111<<<<<<<<<<<<<<<<<<<");
-		    System.out.println(hcclass.getHcclassroom().getMaxcap() +"11111<<<<<<<<<<<<<<<<<<<");
-		}
-		
-	    
-	    
-	//	Hccourse course= HccourseDB.getline(courseid);
-		
+
 		request.setAttribute("list", list);
 		getServletContext().getRequestDispatcher("/disclassbycourse.jsp").forward(request, response);
 		

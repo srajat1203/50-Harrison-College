@@ -27,23 +27,22 @@
 
 	<jsp:include page="navbar.jsp"/>
 	<div class="container">
+	
   <h2>input courseid</h2>
+  
+  
   <form class="form-horizontal" role="form" action="Classbycourse" method="post">
    
-  
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="courseid">courseid:</label>
-      <div class="col-sm-10">          
-        <input type="text" class="form-control" id="courseid" placeholder="Enter courseid" name="courseid">
-      </div>
-
-  </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
+    <label for="x">Select Course</label><br>
+	  <select  name="courseid">
+	   <optgroup label=Instructor>
+	  	${instr} 
+	    </optgroup>
+	  </select>	  
+	    <br><br>
+    <button type="submit" class="btn btn-default">Find classes</button>
   </form>
+
 </div>
 
 

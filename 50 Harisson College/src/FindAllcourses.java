@@ -50,7 +50,7 @@ public class FindAllcourses extends HttpServlet {
 			
 			response.setContentType("text/html");
 			request.setAttribute("instr", instr);
-			getServletContext().getRequestDispatcher("/classbyinstructor.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/classbycourse.jsp").forward(request, response);
 	}
 
 	/**
