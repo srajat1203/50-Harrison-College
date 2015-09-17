@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="jquery.rating.js"></script>
+  <link rel="stylesheet"
+	href="pageStyle.css">
 </head>
 <body>
 
-<div class="container">
+	<jsp:include page="navbar.jsp"/>
+	<div class="container">
   <h2>input instructor</h2>
   <form class="form-horizontal" role="form" action="Classbyinstructor" method="post">
    
