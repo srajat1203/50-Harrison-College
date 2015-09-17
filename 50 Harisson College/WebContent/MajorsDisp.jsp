@@ -13,24 +13,21 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 <div class="container">
-
-<div class="container" >
-  <form class="form-inline" role="form" action="Majors" method="post">
+</br>
+   <form class="form-inline" role="form" action="Majors" method="post">
     <div class="form-group">
-      <label for="dept">Department</label>
+      <label for="dept">By Department</label>
       <input type="text" class="form-control" id="dept" name="dept" placeholder="Enter Department name">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
-</div>
-  
-  
- 
 
   <h2>Majors</h2>
+<div class="container">
   <ul class="list-group">
     <li class="list-group-item">${maj}</li>
   </ul>
+  </div>
 </div>
 <jsp:include page="footer.jsp"/>
 </body>

@@ -32,6 +32,7 @@
 
 <div class="container">
   <form class="form-inline" role="form" action="ClassesbySem" method="post">
+    
     <div class="form-group">
       <label for="sem">Semester</label>
       <input type="text" class="form-control" id="sem" name="sem" placeholder="Enter Semester">

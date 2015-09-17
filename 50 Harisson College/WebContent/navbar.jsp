@@ -72,6 +72,17 @@
       				<li><a href="ClassInfo">Class</a></li>
 					</ul>
         </li>
+               <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+					<li><b>Classes</b></li>
+					 <li role="separator" class="divider"></li>
+      			<li><a href="FindAllInstr">By Instructor</a></li>
+      			<li><a href="FindAllStudents">By Student</a></li>
+      			<li><a href="SubmitDepartmentServlet">Department</a></li>
+      			<li><a href="SubmitMajorServlet">Major</a></li>
+      				<li><a href="ClassInfo">Class</a></li>
+					</ul>
+        </li>
 					<%
  	}
  				}
