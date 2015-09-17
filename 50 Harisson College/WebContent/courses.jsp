@@ -18,6 +18,7 @@
 <body>
 
 	<jsp:include page="navbar.jsp"/>
+	<div class="container">
 	<table class="table table-striped">
 	<thead><tr><th>Course Num</th><th>Credits</th><th>Enable</th><th>Subject Code</th><th>Name</th><th>Dept</th></tr></thead>
  	<c:forEach var="c" items="${courses}">
@@ -28,15 +29,25 @@
 			<td>${c.subjectcode}</td>
 			<td>${c.name}</td>
 			<td>${c.hcdept.name}</td>
-			<td><a href = "EditCourseServlet?coursenum=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
-			<c:if test="${c.enable eq 1}"><a href = "DisableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Disable</button></a></c:if>
-			<c:if test="${c.enable eq 0}"><a href = "EnableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Enable</button></a></c:if></td>
+			
+			
+						
+  <div class="row">
+
+				
+			<td>	<div class="col-xs-2 col-md-2"><a href = "EditCourseServlet?coursenum=${c.id}"><button type="button" class="btn pull-left btn-success">Edit</button></a>
+					</div>
+		<div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 1}"><a href = "DisableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Disable</button></a></c:if>
+					</div>
+		<div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 0}"><a href = "EnableCourseServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Enable</button></a></c:if></div></td>
+		</div>
 		</tr>
 	</c:forEach> 
 	</table>
 <br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "SubmitCourseServlet"><button type="button" class="btn pull-left btn-info btn-lg">Create a course</button></a>
 <br>
+</div>
 </body>
 </html>

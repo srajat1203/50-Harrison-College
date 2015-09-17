@@ -11,22 +11,23 @@
 
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
-<title>Welcome to Stanford University!</title>
   <link rel="stylesheet"
 	href="pageStyle.css">
 </head>
 <body>
 
 	<jsp:include page="navbar.jsp"/>
+		
 <!-- create a new account -->
 	<div class="container">
-		<div class="container">
+		<h1>Create a new User</h1>
+		<%-- <div class="container">
 			<div class="jumbotron other-color">
 				<center>
 					<h1>Create a new User</h1>
 				</center>
 			</div>
-		</div>
+		</div> --%>
 		<form class="form-horizontal" role="myForm" action="CreateUserServlet" onsubmit="return validateForm()" method="post">
 		
 			
@@ -107,7 +108,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-5">
 					<center>
-						<button type="submit" class="btn btn-primary btn-lg btn-block"
+						<button type="submit" class="btn btn-lg btn-block"
 							value="addstudent">Create User</button>
 					</center>
 				</div>

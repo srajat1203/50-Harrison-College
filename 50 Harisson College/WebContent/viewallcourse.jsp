@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="container">
 <table>
 <c:forEach var="item" items="${list}">
 	<thread><tr><th>courseid</th><th>name</th><th>credits</th><th>description</th><th>subjectcode</th><th>departmentid</th><th>enable</th></tr></thread>
@@ -30,7 +30,7 @@
 </table>
 
 
-
+</div>
 
 </body>
 </html>

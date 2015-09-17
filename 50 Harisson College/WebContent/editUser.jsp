@@ -20,13 +20,14 @@
 	<jsp:include page="navbar.jsp"/>
 <!-- create a new account -->
 	<div class="container">
-		<div class="container">
+	<h1>Edit a user</h1>
+		<%-- <div class="container">
 			<div class="jumbotron other-color">
 				<center>
 					<h1>Edit a user</h1>
 				</center>
 			</div>
-		</div>
+		</div> --%>
 		<form class="form-horizontal" role="myForm" action="SaveUserServlet" onsubmit="return validateForm()" method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-5">User Name :</label>
@@ -133,7 +134,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-5">
 					<center>
-						<button type="submit" class="btn btn-primary btn-lg btn-block"
+						<button type="submit" class="btn btn-lg btn-block"
 							value="addstudent">Edit Department</button>
 					</center>
 				</div>

@@ -10,11 +10,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<link rel="stylesheet"
+	href="pageStyle.css">
+
 </head>
 <body>
-
-
+	<jsp:include page="navbar.jsp" />
+	<div class="container">
 <h2>input courseid</h2>
   <form class="form-horizontal" role="form" action="test2" method="post">
    
@@ -48,6 +50,5 @@
     </tr>
 
 </table>
-
 </body>
 </html>

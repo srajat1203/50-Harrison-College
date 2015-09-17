@@ -44,12 +44,7 @@
 
 
 <br><br>
-<div class="container" >
-  <form class="form-inline" role="form" action="DropDisp.jsp" method="post">
-  
-    <button type="submit" class="btn btn-default">Drop Class</button>
-  </form>
-</div>
+
   
 
 </body>

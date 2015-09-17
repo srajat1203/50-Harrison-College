@@ -11,29 +11,37 @@
 
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
-<title>Welcome to Tian Mao!</title>
+
   <link rel="stylesheet"
 	href="pageStyle.css">
 </head>
 <body>
 
 	<jsp:include page="navbar.jsp"/>
+	<div class="container">
 	<table class="table table-striped">
 	<thead><tr><th>name</th><th>enable</th></tr></thead>
  	<c:forEach var="c" items="${depts}">
 		<tr>
 			<td>${c.name}</td>
 			<td>${c.enable}</td>
+						
+  <div class="row">
+
+
+			<td>
+						<div class="col-xs-2 col-md-2">
+						<a href = "EditDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Edit</button></a>
 			
-			<td><a href = "EditDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
-			<c:if test="${c.enable eq 1}"><a href = "DisableDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Disable</button></a></c:if>
-			<c:if test="${c.enable eq 0}"><a href = "EnableDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Enable</button></a></c:if></td>
+			</div>			<div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 1}"><a href = "DisableDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Disable</button></a></c:if>
+						</div><div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 0}"><a href = "EnableDepartmentServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Enable</button></a></c:if>
+			</div></td>
+			</div>
 		</tr>
 	</c:forEach> 
 	</table>
-<br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "SubmitDepartmentServlet"><button type="button" class="btn pull-left btn-info btn-lg">Create a department</button></a>
-<br>
+</div>
 </body>
 </html>

@@ -20,12 +20,13 @@
 	<jsp:include page="navbar.jsp"/>
 <!-- create a new account -->
 	<div class="container">
-		<div class="container">
+	<h1>Edit a major</h1>
+<%-- 		<div class="container">
 			<div class="jumbotron other-color">
 				<center>
 					<h1>Edit a major</h1>
 				</center>
-			</div>
+			</div> --%>
 		</div>
 		<form class="form-horizontal" role="myForm" action="SaveMajorServlet" onsubmit="return validateForm()" method="post">
 			<div class="form-group">
@@ -60,7 +61,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-5">
 					<center>
-						<button type="submit" class="btn btn-primary btn-lg btn-block"
+						<button type="submit" class="btn btn-lg btn-block"
 							value="addstudent">Edit Major</button>
 					</center>
 				</div>

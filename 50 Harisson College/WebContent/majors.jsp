@@ -18,6 +18,7 @@
 <body>
 
 	<jsp:include page="navbar.jsp"/>
+	<div class="container" >
 	<table class="table table-striped">
 	<thead><tr><th>name</th><th>department name</th><th>enable</th></tr></thead>
  	<c:forEach var="c" items="${majors}">
@@ -26,15 +27,22 @@
 			<td>${c.hcdept.name}</td>
 			<td>${c.enable}</td>
 			
-			<td><a href = "EditMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
-			<c:if test="${c.enable eq 1}"><a href = "DisableMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Disable</button></a></c:if>
-			<c:if test="${c.enable eq 0}"><a href = "EnableMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Enable</button></a></c:if></td>
+  <div class="row">
+			<td>
+			<div class="col-xs-2 col-md-2">
+			<a href = "EditMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Edit</button></a>
+		</div>
+		<div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 1}"><a href = "DisableMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Disable</button></a></c:if>
+			</div><div class="col-xs-2 col-md-2">
+			<c:if test="${c.enable eq 0}"><a href = "EnableMajorServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Enable</button></a></c:if>
+				</div></td></div>
+		
 		</tr>
 	</c:forEach> 
 	</table>
 <br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "SubmitMajorServlet"><button type="button" class="btn pull-left btn-info btn-lg">Create a major</button></a>
 <br>
+</div>
 </body>
 </html>

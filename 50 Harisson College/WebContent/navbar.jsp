@@ -19,7 +19,7 @@
 				<li><a href="Login?logout=true">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
-					<li><a href="CourseDisp.jsp">View Courses</a></li>
+					<li><a href="Courses">View Courses</a></li>
 						<li><a href="MajorsDisp.jsp">View Majors</a></li>
 					<li><a href="ClassesbySemDisp.jsp">Available Classes</a> </li><%
  	if (session.getAttribute("userType").equals(1)) {
@@ -58,6 +58,16 @@
       			<li><a href="ManageClassroomServlet">Classrooms</a></li>
       			<li><a href="ManageDepartmentServlet">Departments</a></li>
       			<li><a href="ManageMajorServlet">Majors</a></li>
+					</ul>
+        </li>
+        
+         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Add New<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+					<li><a href="SubmitUserServlet">User</a></li>
+      			<li><a href="SubmitCourseServlet">Course</a></li>
+      			<li><a href="SubmitClassroomServlet">Classroom</a></li>
+      			<li><a href="SubmitDepartmentServlet">Department</a></li>
+      			<li><a href="SubmitMajorServlet">Major</a></li>
 					</ul>
         </li>
 					<%

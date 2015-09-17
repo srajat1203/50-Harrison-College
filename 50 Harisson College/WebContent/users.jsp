@@ -163,7 +163,7 @@ $(document).ready(function(){
 			</c:if>
 
 			
-			<td><a href = "EditUserServlet?id=${c.userid}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
+			<td><a href = "EditUserServlet?id=${c.userid}"><button type="button" class="btn pull-left btn-success">Edit</button></a>
 			
 		</tr>
 	</c:forEach> 
@@ -171,13 +171,10 @@ $(document).ready(function(){
 	</table>
 	  </div>
       <div class="col-md-12 text-center">
-      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      <ul class="pager" id="myPager"></ul>
       </div>
 	</div>
 </div>
-<br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "SubmitUserServlet"><button type="button" class="btn pull-left btn-info btn-lg">Create a user</button></a>
-<br>
+
 </body>
 </html>

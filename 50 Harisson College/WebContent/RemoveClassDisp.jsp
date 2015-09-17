@@ -13,7 +13,7 @@
 	href="pageStyle.css">
 </head>
 <body>
-
+	<jsp:include page="navbar.jsp" />
 <div class="container">
 ${message}
   <h2>Remove Class</h2>

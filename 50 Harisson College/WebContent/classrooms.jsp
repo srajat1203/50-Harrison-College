@@ -18,6 +18,7 @@
 <body>
 
 	<jsp:include page="navbar.jsp"/>
+	<div class="container">
 	<table class="table table-striped">
 	<thead><tr><th>building name</th><th>maxcap</th><th>room</th></tr></thead>
  	<c:forEach var="c" items="${classrooms}">
@@ -26,14 +27,14 @@
 			<td>${c.maxcap}</td>
 			<td>${c.room}</td>
 			
-			<td><a href = "EditClassroomServlet?id=${c.id}"><button type="button" class="btn pull-left btn-info btn-lg">Edit</button></a>
+			<td><a href = "EditClassroomServlet?id=${c.id}"><button type="button" class="btn pull-left btn-success">Edit</button></a>
 			
 		</tr>
 	</c:forEach> 
 	</table>
 <br>
-<a href = "index.jsp"><button type="button" class="btn btn-info btn-lg">Back>>></button></a>
-<a href = "SubmitClassroomServlet"><button type="button" class="btn pull-left btn-info btn-lg">Create a classroom</button></a>
+
 <br>
+</div>
 </body>
 </html>
