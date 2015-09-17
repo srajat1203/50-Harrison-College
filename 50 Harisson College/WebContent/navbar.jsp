@@ -76,13 +76,13 @@
           <ul class="dropdown-menu">
 					<li><b>Classes</b></li>
 					 <li role="separator" class="divider"></li>
-      			<li><a href="classbyinstructor.jsp">By Instructor</a></li>
+      			<li><a href="FindAllInstr?author=xiaohua">By Instructor</a></li>
       			<li><a href="FindAllInstr">By taught Instructor</a></li>
       			<li><a href="FindAllStudents">By Student</a></li>
-      			<li><a href="classbycourse.jsp">By Course</a></li>
+      			<li><a href="FindAllcourses">By Course</a></li>
       			<li><b>Classrooms</b></li>
 					 <li role="separator" class="divider"></li>
-					 <li><a href="classroombyinstructor.jsp">By Instructor</a></li>
+					 <li><a href="FindAllInstr?author=xiaohua2">By Instructor</a></li>
            			<li><a href="classroombystudent.jsp">By Student</a></li>
       			<li><a href="classroombycourse.jsp">By Course</a></li>
 					<li><b>Students</b></li>

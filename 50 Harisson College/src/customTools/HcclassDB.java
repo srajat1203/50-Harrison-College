@@ -15,6 +15,21 @@ import model.Hcuser;
 
 public class HcclassDB {
 
+	public static Hcclass getInstructorBycrn(int uid){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Hcclass i where i.crn = " + uid;
+		TypedQuery<Hcclass> q = em.createQuery(qString, Hcclass.class);
+		List<Hcclass> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users.get(0);
+	}
 
 	public static List<Hcclass> getclass(Hcuser user) 
 	{

@@ -30,20 +30,14 @@
   <form class="form-horizontal" role="form" action="Classbyinstructor" method="post">
    
   
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="instructorid">Instructor id:</label>
-      <div class="col-sm-10">          
-        <input type="text" class="form-control" id="instructorid" placeholder="Enter instructorid" name="instructorid">
-      </div>
-      
-    
-    
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
+      <label for="x">Select Instructor</label><br>
+	  <select  name="instructorid">
+	   <optgroup label=Instructor>
+	  	${instr} 
+	    </optgroup>
+	  </select>	  
+	    <br><br>
+    <button type="submit" class="btn btn-default">Find classes</button>
   </form>
 
 

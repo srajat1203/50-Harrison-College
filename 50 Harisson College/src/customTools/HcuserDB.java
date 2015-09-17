@@ -50,6 +50,44 @@ public class HcuserDB {
 	
 	
 	
+
+	
+	
+	
+	
+	public static Hcuser getInstructorByID(int uid){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Hcuser i where i.userid = " + uid + " and i.type = 2";
+		TypedQuery<Hcuser> q = em.createQuery(qString, Hcuser.class);
+		List<Hcuser> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users.get(0);
+	}
+	
+	public static Hcuser getStudentByID(int uid){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		//String qString = "select i from Hcuser i where i.userid = " + uid + " and i.type = 1";
+		String qString = "select i from Hcuser i where i.userid = " + uid + " and i.type = 1";
+		TypedQuery<Hcuser> q = em.createQuery(qString, Hcuser.class);
+		List<Hcuser> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users.get(0);
+	}
+	
 	
 	
 	public static Hcuser getclassroom(long instructorid)

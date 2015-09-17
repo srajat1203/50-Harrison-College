@@ -30,26 +30,19 @@
   <h2>input instructor</h2>
   <form class="form-horizontal" role="form" action="Roombyinstructor" method="post">
    
-  
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="userid">instructorid:</label>
-      <div class="col-sm-10">          
-        <input type="text" class="form-control" id="userid" placeholder="Enter userid" name="userid">
-      </div>
-
-  </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
+    <label for="x">Select Instructor</label><br>
+	  <select  name="userid">
+	   <optgroup label=Instructor>
+	  	${instr} 
+	    </optgroup>
+	  </select>	  
+	    <br><br>
+    <button type="submit" class="btn btn-default">Find classes</button>
   </form>
+   
+  
+   
 </div>
-
-
-
-
-
          
 
 

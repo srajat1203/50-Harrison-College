@@ -33,29 +33,73 @@ public class FindAllInstr extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-
-		instr = "";
-		
-		
-		Utils<Hcuser> dbu = new Utils<Hcuser>();
-		String q = "Select u from Hcuser u";
-		List<Hcuser> users = null;
-		users = dbu.getList(q);
-		if(users != null)
-		{
-			for(Hcuser cur: users)
+		if(request.getParameter("author") != null && request.getParameter("author").equals("xiaohua")){
+			instr = "";
+			
+			
+			Utils<Hcuser> dbu = new Utils<Hcuser>();
+			String q = "Select u from Hcuser u";
+			List<Hcuser> users = null;
+			users = dbu.getList(q);
+			if(users != null)
 			{
-				if(cur.getType() == 2)
+				for(Hcuser cur: users)
 				{
-					instr += instrJsp(cur);
+					if(cur.getType() == 2)
+					{
+						instr += instrJsp(cur);
+					}
 				}
 			}
+			
+			response.setContentType("text/html");
+			request.setAttribute("instr", instr);
+			getServletContext().getRequestDispatcher("/classbyinstructor.jsp").forward(request, response);
+		}else if(request.getParameter("author") != null && request.getParameter("author").equals("xiaohua2")){
+			instr = "";
+			
+			
+			Utils<Hcuser> dbu = new Utils<Hcuser>();
+			String q = "Select u from Hcuser u";
+			List<Hcuser> users = null;
+			users = dbu.getList(q);
+			if(users != null)
+			{
+				for(Hcuser cur: users)
+				{
+					if(cur.getType() == 2)
+					{
+						instr += instrJsp(cur);
+					}
+				}
+			}
+			
+			response.setContentType("text/html");
+			request.setAttribute("instr", instr);
+			getServletContext().getRequestDispatcher("/classroombyinstructor.jsp").forward(request, response);
+		}else{
+			instr = "";
+			
+			
+			Utils<Hcuser> dbu = new Utils<Hcuser>();
+			String q = "Select u from Hcuser u";
+			List<Hcuser> users = null;
+			users = dbu.getList(q);
+			if(users != null)
+			{
+				for(Hcuser cur: users)
+				{
+					if(cur.getType() == 2)
+					{
+						instr += instrJsp(cur);
+					}
+				}
+			}
+			
+			response.setContentType("text/html");
+			request.setAttribute("instr", instr);
+			getServletContext().getRequestDispatcher("/ViewInstrDisp.jsp").forward(request, response);
 		}
-		
-		response.setContentType("text/html");
-		request.setAttribute("instr", instr);
-		getServletContext().getRequestDispatcher("/ViewInstrDisp.jsp")
-		.forward(request, response);
 	}
 
 	/**

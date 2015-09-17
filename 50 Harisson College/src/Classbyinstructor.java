@@ -35,7 +35,7 @@ public class Classbyinstructor extends HttpServlet {
 		
 		System.out.println("doget classbyinstructor");
 		
-		int userid = Integer.parseInt(request.getParameter("userid"));
+		int userid = Integer.parseInt(request.getParameter("instructorid"));
 		System.out.println(userid);
 		Hcuser hcuser=new Hcuser();
 		hcuser.setUserid(userid);
