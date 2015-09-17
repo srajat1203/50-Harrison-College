@@ -12,9 +12,12 @@
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
 <title>Welcome to Tian Mao!</title>
+  <link rel="stylesheet"
+	href="pageStyle.css">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+
+	<jsp:include page="navbar.jsp"/>
 	<table class="table table-striped">
 	<thead><tr><th>building name</th><th>maxcap</th><th>room</th></tr></thead>
  	<c:forEach var="c" items="${classrooms}">

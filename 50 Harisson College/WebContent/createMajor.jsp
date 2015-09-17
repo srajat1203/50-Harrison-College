@@ -12,9 +12,12 @@
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
 <title>Welcome to Stanford University!</title>
+  <link rel="stylesheet"
+	href="pageStyle.css">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+
+	<jsp:include page="navbar.jsp"/>
 <!-- create a new account -->
 	<div class="container">
 		<div class="container">

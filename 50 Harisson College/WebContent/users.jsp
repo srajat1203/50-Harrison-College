@@ -127,10 +127,12 @@ $(document).ready(function(){
 .table-responsive {height:360px;}
 </style>
 
-<title>Welcome to Tian Mao!</title>
+  <link rel="stylesheet"
+	href="pageStyle.css">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+
+	<jsp:include page="navbar.jsp"/>
 <div class="container">
 	<div class="row">
     <div class="table-responsive">
