@@ -103,7 +103,7 @@ ${message}
   </form> 
   </div>
 </div>
-
+<jsp:include page="footer.jsp"/>
 <script type="text/javascript">
 function calculate_Total_price(text)
 {

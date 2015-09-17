@@ -58,6 +58,7 @@
       			<li><a href="ManageClassroomServlet">Classrooms</a></li>
       			<li><a href="ManageDepartmentServlet">Departments</a></li>
       			<li><a href="ManageMajorServlet">Majors</a></li>
+      			<li><a href="RemoveClassDisp.jsp">Class</a></li>
 					</ul>
         </li>
         
@@ -68,6 +69,7 @@
       			<li><a href="SubmitClassroomServlet">Classroom</a></li>
       			<li><a href="SubmitDepartmentServlet">Department</a></li>
       			<li><a href="SubmitMajorServlet">Major</a></li>
+      				<li><a href="ClassInfo">Class</a></li>
 					</ul>
         </li>
 					<%

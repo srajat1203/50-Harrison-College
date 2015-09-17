@@ -13,7 +13,6 @@
 	href="pageStyle.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
 <div class="container">
 ${message}
   <h2>Remove Class</h2>
@@ -26,6 +25,6 @@ ${message}
     <button type="submit" class="btn btn-default">Remove</button>
   </form>
 </div>
-
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

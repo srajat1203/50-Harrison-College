@@ -32,6 +32,6 @@
     <li class="list-group-item">${maj}</li>
   </ul>
 </div>
-
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

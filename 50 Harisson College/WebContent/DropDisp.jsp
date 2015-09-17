@@ -32,6 +32,6 @@ ${message}
     <button type="submit" class="btn btn-default">Drop</button>
   </form>
 </div>
-
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

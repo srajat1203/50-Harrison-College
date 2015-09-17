@@ -27,7 +27,7 @@
 					<h1>Create a new major</h1>
 				</center>
 			</div>
-		</div --%>>
+		</div --%>
 		<form class="form-horizontal" role="myForm" action="CreateMajorServlet" onsubmit="return validateForm()" method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-5">Major Name :</label>

@@ -34,7 +34,6 @@
       </div>
     </div>
   </form>
-</div>
 
 
 <table>
@@ -53,8 +52,10 @@
 </table>
 
 
+</div>
 
 
+	<jsp:include page="footer.jsp" />
 
 
 </body>

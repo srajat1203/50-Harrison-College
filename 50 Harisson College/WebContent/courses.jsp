@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" href="jquery.rating.css">
 <script src="jquery.rating.js"></script>
-<title>Welcome to Tian Mao!</title>
   <link rel="stylesheet"
 	href="pageStyle.css">
 </head>
@@ -49,5 +48,6 @@
 <br>
 <br>
 </div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

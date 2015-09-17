@@ -1,4 +1,13 @@
 @CHARSET "ISO-8859-1";
+#footer{
+	 background-color: #1e6912;
+	  color: #97D38D;
+	   position: relative;
+
+  height: 50px;
+  clear:both;
+  padding-top:20px;
+}
 /* navbar */
 .navbar-default {
     background-color: #1e6912;
