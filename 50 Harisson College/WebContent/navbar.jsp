@@ -78,7 +78,7 @@
 					 <li role="separator" class="divider"></li>
       			<li><a href="FindAllInstr">By Instructor</a></li>
       			<li><a href="FindAllStudents">By Student</a></li>
-      			<li><a href="SubmitDepartmentServlet">Department</a></li>
+      			<li><a href="FindAllStudents">By Course</a></li>
       			<li><a href="SubmitMajorServlet">Major</a></li>
       				<li><a href="ClassInfo">Class</a></li>
 					</ul>
