@@ -85,13 +85,13 @@
 					 <li><a href="classroombyinstructor.jsp">By Instructor</a></li>
            			<li><a href="classroombystudent.jsp">By Student</a></li>
       			<li><a href="classroombycourse.jsp">By Course</a></li>
-					</ul>
 					<li><b>Students</b></li>
 					 <li role="separator" class="divider"></li>
 					 <li><a href="classroombystudent.jsp">Taught by an Instructor</a></li>
 					 <li><b>Instructors</b></li>
 					 <li role="separator" class="divider"></li>
 					 <li><a href="instructorbyclass.jsp">have taught a class</a></li>
+					 </ul>
         </li>
 					<%
  	}
