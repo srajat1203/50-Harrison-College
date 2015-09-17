@@ -13,6 +13,8 @@
 	<jsp:include page="navbar.jsp"/>
 
 <div class="container" >
+
+${message}
   <h2>Create Class</h2>
   <form role="form" action="CreateClass" method="post">
       <label for="x">Select Course</label><br>
