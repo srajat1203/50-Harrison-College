@@ -16,7 +16,7 @@
 				<%
 					} else {
 				%>
-				<li><a href="Login?logout=true">Logout</a></li>
+				<li><a href="Logout">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
 					<li><a href="Courses">View Courses</a></li>
