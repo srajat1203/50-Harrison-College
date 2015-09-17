@@ -19,9 +19,9 @@
 				<li><a href="Login?logout=true">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
-					<li><a href="CourseDisp.jsp">View Courses</a>
-						<li><a href="MajorsDisp.jsp">View Majors</a>
-					<li><a href="ClassesbySemDisp.jsp">Available Classes</a> <%
+					<li><a href="CourseDisp.jsp">View Courses</a></li>
+						<li><a href="MajorsDisp.jsp">View Majors</a></li>
+					<li><a href="ClassesbySemDisp.jsp">Available Classes</a> </li><%
  	if (session.getAttribute("userType").equals(1)) {
  %>
 	<li><a href="CurrentSchedule">My Schedule</a></li>
@@ -38,20 +38,29 @@
  	} else {
  			if (session.getAttribute("userType").equals(2)) {
  %>
-					<li><a href="RosterOfStudent.jsp">My Classes</a>
-					<li><a href="CurrentSemesterClasses">Current classes</a>
+					<li><a href="RosterOfStudent.jsp">My Classes</a></li>
+					<li><a href="CurrentSemesterClasses">Current classes</a></li>
 					<li><a href="GradeSheets.jsp">Grade Sheets</a></li>
 					<%
 						} else {
 									if (session.getAttribute("userType").equals(3)) {
 					%>
-					<li><a href="Transcripts.jsp">Transcripts</a> 
+					<li><a href="Transcripts.jsp">Transcripts</a> </li>
 					<li><a href="EnrollDisp.jsp">Enroll Student</a></li>
 					<li><a href="DropDisp.jsp">Drop Student</a></li><%
  	} else {
  					if (session.getAttribute("userType").equals(4)) {
  %>
-					<li><a href="">Administrators</a> <%
+ <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+					<li><a href="ManageUserServlet">Users</a></li>
+      			<li><a href="ManageCourseServlet">Courses</a></li>
+      			<li><a href="ManageClassroomServlet">Classrooms</a></li>
+      			<li><a href="ManageDepartmentServlet">Departments</a></li>
+      			<li><a href="ManageMajorServlet">Majors</a></li>
+					</ul>
+        </li>
+					<%
  	}
  				}
  			}
