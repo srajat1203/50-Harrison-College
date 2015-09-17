@@ -25,7 +25,7 @@ public class Hcclassroom implements Serializable {
 
 	private int maxcap;
 
-	private BigDecimal room;
+	private int room;
 
 	//bi-directional many-to-one association to Hcclass
 	@OneToMany(mappedBy="hcclassroom")
@@ -58,11 +58,11 @@ public class Hcclassroom implements Serializable {
 		this.maxcap = maxcap;
 	}
 
-	public BigDecimal getRoom() {
+	public int getRoom() {
 		return this.room;
 	}
 
-	public void setRoom(BigDecimal room) {
+	public void setRoom(int room) {
 		this.room = room;
 	}
 

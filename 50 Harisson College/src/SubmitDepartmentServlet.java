@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import customTools.HccourseDB;
+import customTools.*;
 import model.Hccourse;
 import model.Hcdept;
 import model.Hcuser;
