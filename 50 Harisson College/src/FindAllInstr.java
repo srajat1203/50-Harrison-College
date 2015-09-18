@@ -96,9 +96,20 @@ public class FindAllInstr extends HttpServlet {
 				}
 			}
 			
-			response.setContentType("text/html");
-			request.setAttribute("instr", instr);
-			getServletContext().getRequestDispatcher("/ViewInstrDisp.jsp").forward(request, response);
+			
+			 if(request.getParameter("author") != null && request.getParameter("author").equals("rajat"))
+			 {
+				 request.setAttribute("current", "true");
+				 response.setContentType("text/html");
+				 request.setAttribute("instr", instr);
+				 getServletContext().getRequestDispatcher("/ClassByInstrCurDisp.jsp").forward(request, response);
+			 }
+			 else
+			 {
+				 response.setContentType("text/html");
+				 request.setAttribute("instr", instr);
+				 getServletContext().getRequestDispatcher("/ViewInstrDisp.jsp").forward(request, response);
+			 }
 		}
 	}
 

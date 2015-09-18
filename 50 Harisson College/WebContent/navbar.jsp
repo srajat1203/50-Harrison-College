@@ -77,7 +77,7 @@
 					<li><b>Classes</b></li>
 					 <li role="separator" class="divider"></li>
       			<li><a href="FindAllInstr?author=xiaohua">By Instructor</a></li>
-      			<li><a href="XX">Taught by Instructor</a></li>
+      			<li><a href="FindAllInstr?author=rajat">Taught by Instructor</a></li>
       			<li><a href="FindAllStudents">By Student</a></li>
       			<li><a href="FindAllcourses">By Course</a></li>
       			<li><b>Classrooms</b></li>
@@ -97,10 +97,10 @@
             
          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Revenue<span class="caret"></span></a>
           <ul class="dropdown-menu">
-					<li><a href="RevenueClassDisp.jsp">By Class</a></li>
-      			<li><a href="RevenueCourseDisp.jsp">By Course</a></li>
-      			<li><a href="RevenueDeptDisp.jsp">By Department</a></li>
-      			<li><a href="RevenueInstrDisp.jsp">By Instructor</a></li>
+					<li><a href="RevenueClass">By Class</a></li>
+      			<li><a href="RevenueCourse">By Course</a></li>
+      			<li><a href="RevenueDept">By Department</a></li>
+      			<li><a href="RevenueInstr">By Instructor</a></li>
       			<li><a href="SetRevenueDisp.jsp">Set price/credit</a></li>
 					</ul>
         </li>

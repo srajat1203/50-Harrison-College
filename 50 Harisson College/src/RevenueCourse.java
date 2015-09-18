@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Hccourse;
-import model.Hcdept;
-import model.Hcenrolledclass;
-import model.Hcmoney;
+import model.*;
 
 /**
  * Servlet implementation class RevenueCourse

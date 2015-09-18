@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Hcclass;
 import model.Hcenrolledclass;
 
 /**
- * Servlet implementation class ViewInstr
+ * Servlet implementation class ClassbyInstrCur
  */
-@WebServlet("/ViewInstr")
-public class ViewInstr extends HttpServlet {
+@WebServlet("/ClassbyInstrCur")
+public class ClassbyInstrCur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewInstr() {
+    public ClassbyInstrCur() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,61 +31,55 @@ public class ViewInstr extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
+		String crn = "";
+		String sub = "";
+		String daytime = "";
+		String sem = "";
+		String place = "";
 		
-		
-
-		String uid = "";
-		String name = "";
 		String temp_userid = request.getParameter("instr");
 		long userid = Long.parseLong(temp_userid);
 		
-		String itscurrent= request.getParameter("current");
-		//System.out.println(itscurrent);
+		String p = "select c from Hcclass c";;
+		Utils<Hcclass> dbc = new Utils<Hcclass>();
+		List<Hcclass> clist = null;
+		clist = dbc.getList(p);
 		
-	
-		//System.out.println(userid);
-		
-		//String q = "Select u from hcuser u where u.userid = " + userid;
-		//Utils<Hcuser> dbu = new Utils<Hcuser>();
-		//Hcuser user = dbu.getResult(q); 
-		
-		String p = "select p from Hcenrolledclass p";;
-		Utils<Hcenrolledclass> dbe = new Utils<Hcenrolledclass>();
-		List<Hcenrolledclass> elist = null;
-		elist = dbe.getList(p);
-		
-		if(elist != null)
+		if(clist != null)
 		{
-			for(Hcenrolledclass cur: elist)
+			for(Hcclass cur: clist)
 			{
-				
-			
-				if(cur.getHcclass().getHcuser().getUserid() == userid)
+				if(cur.getEnable() == 1)
 				{	
-					uid += cur.getHcuser().getUserid() + "<br><br>";
-					name += cur.getHcuser().getName() + "<br><br>";
-					
-				}
-				
+					crn += cur.getCrn() + "<br><br>";
+					sub += cur.getHccourse().getName() + "<br><br>";
+					daytime += cur.getDaytime() + "<br><br>";
+					sem += cur.getSemester() + "<br><br>";
+					place += cur.getHcclassroom().getBldgname() + " " + cur.getHcclassroom().getRoom() + "<br><br>";
+				}	
 			}
 		}
 		
-		//System.out.println("here");
-		response.setContentType("text/html");
-		request.setAttribute("userid", uid);
-		request.setAttribute("name", name);
-		getServletContext().getRequestDispatcher("/FindAllInstr")
-		.forward(request, response);
 		
- }
+		response.setContentType("text/html");
+		request.setAttribute("crn", crn);
+		request.setAttribute("sub", sub);
+		request.setAttribute("daytime", daytime);
+		request.setAttribute("sem", sem);
+		request.setAttribute("place", place);
+		getServletContext().getRequestDispatcher("/FindAllInstr?author=rajat")
+		.forward(request, response);
+
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request,response);
+		doGet(request, response);
 	}
-	
-}	
+
+}
