@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Hcclass;
+import model.Hccourse;
 import model.Hcuser;
+import customTools.DBUtil;
 import customTools.HcclassDB;
+import customTools.HccourseDB;
 
 /**
  * Servlet implementation class Classbyinstructor
@@ -37,25 +41,24 @@ public class Instructorbyclass extends HttpServlet {
 		
 		int crnid = Integer.parseInt(request.getParameter("crnid"));
 		System.out.println(crnid);
-		Hcclass hcclass=HcclassDB.getInstructorBycrn(crnid);
 		
 		
-		Hcuser hcuser=hcclass.getHcuser();
+		//Hccourse hccourse=HccourseDB.getCourseByID(crnid);
+		//Hcclass hcclass = HcclassDB.getClassByID(crnid);
+		
+		Hcclass cclass = null;
+		Utils<Hcclass> dbc = new Utils<Hcclass>();
+		String q = "Select c from Hcclass c where c.crn = " + crnid;
+		cclass =  dbc.getResult(q);
 		
 		
-		//
-		//hcuser.setName("bb");
+		Hcuser instr = cclass.getHcuser();
 		
+		List<Hcuser> list= new ArrayList<Hcuser>(); 
+		list.add(instr);
 		
-		//List<Hcclass> list=HcclassDB.(hcuser);
-		//List<Hcclass> list=HcclassDB.getclass(hcuser);
-		
-		
-	//System.out.println(hcclass.getSemester());
-	//System.out.println(hcclass.getSemester());	
-	//System.out.println(hcclass.getSemester());
-	
-		request.setAttribute("hcuser", hcuser);
+
+		request.setAttribute("list", list);
 		getServletContext().getRequestDispatcher("/disinstructorbyclass.jsp").forward(request, response);
 		
 		

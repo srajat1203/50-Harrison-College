@@ -48,7 +48,7 @@ public class Classbycourse extends HttpServlet {
 	
 		
 		
-		int courseid = Integer.parseInt(request.getParameter("courseid"));
+		int courseid = Integer.parseInt(request.getParameter("userid"));
 		
 		Hccourse hccourse=HccourseDB.getCourseByID(courseid);
 

@@ -263,4 +263,25 @@ public class DBUtil {
 		}
 		return clsess;
 	}
+	
+	
+	public static List<Hcuser> selectUsersByClass(Hcclass hcclass) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String query = "SELECT h FROM Hcuser h WHERE h.hcclass=:hcclass";
+		List<Hcuser> clsess = null;
+		System.out.println(query);
+		TypedQuery<Hcuser> q = em.createQuery(query, Hcuser.class);
+		System.out.println(q);
+		q.setParameter("hcclass", hcclass);
+		try {
+			System.out.println("in try");
+			clsess = q.getResultList();
+			//System.out.println(clsess.get(0).getCrn());
+
+		} catch (Exception e) {
+		} finally {
+			em.close();
+		}
+		return clsess;
+	}
 }
