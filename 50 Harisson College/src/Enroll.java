@@ -50,6 +50,8 @@ public class Enroll extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		
+		message = "";
 		Hcuser curuser = new Hcuser();
 		if (request.getParameter("student") != null
 				&& request.getParameter("student") != "") {

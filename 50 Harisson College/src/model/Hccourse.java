@@ -22,7 +22,7 @@ public class Hccourse implements Serializable {
 
 	private int coursenum;
 
-	private double credits;
+	private int credits;
 
 	private String descr;
 
@@ -61,11 +61,11 @@ public class Hccourse implements Serializable {
 		this.coursenum = coursenum;
 	}
 
-	public double getCredits() {
+	public int getCredits() {
 		return this.credits;
 	}
 
-	public void setCredits(double credits) {
+	public void setCredits(int credits) {
 		this.credits = credits;
 	}
 

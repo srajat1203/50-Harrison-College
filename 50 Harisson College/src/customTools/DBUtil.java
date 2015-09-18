@@ -63,14 +63,14 @@ public class DBUtil {
 	public static List<Hcclass> getStudentSchedule(Hcuser hcuser) {
 		System.out.println("in db get Schedule " +hcuser.getName());
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String query = "SELECT DISTINCT c FROM  Hcclass c, Hcenrolledclass h WHERE  h.hcclass=c and c.enable =1";
+		String query = "SELECT DISTINCT c FROM  Hcclass c, Hcenrolledclass h WHERE  h.hcuser=:hcuser and h.hcclass=c and c.enable =1";
 		// h.hcclass=:c
 		System.out.println(query);
 		List<Hcclass> studentSchedule = null;
 		System.out.println("after: " +query);
 
 		TypedQuery<Hcclass> q = em.createQuery(query, Hcclass.class);
-		// h.hcuser=:hcuser and q.setParameter("hcuser", hcuser);
+		q.setParameter("hcuser", hcuser);
 		try {
 			System.out.println("in try");
 			studentSchedule = q.getResultList();

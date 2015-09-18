@@ -24,7 +24,7 @@ public class Drop extends HttpServlet {
 
 	private String message = "";
 	private String err = "<div class=\"alert alert-danger\"> <strong>Error ! </strong> No such CRN in your schedule </div>";
-	private String success = "<div class=\"alert alert-success\"> <strong>Success!</strong> Class has been removed </div>";
+	private String success = "<div class=\"alert alert-success\"> <strong>Success!</strong> Class has been dropped </div>";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -42,6 +42,7 @@ public class Drop extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		message = "";
 		Hcuser curuser = new Hcuser();
 		if (request.getParameter("student") != null
 				&& request.getParameter("student") != "") {
