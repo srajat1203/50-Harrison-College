@@ -77,21 +77,32 @@
 					<li><b>Classes</b></li>
 					 <li role="separator" class="divider"></li>
       			<li><a href="FindAllInstr?author=xiaohua">By Instructor</a></li>
-      			<li><a href="FindAllInstr">By taught Instructor</a></li>
+      			<li><a href="XX">Taught by Instructor</a></li>
       			<li><a href="FindAllStudents">By Student</a></li>
       			<li><a href="FindAllcourses">By Course</a></li>
       			<li><b>Classrooms</b></li>
 					 <li role="separator" class="divider"></li>
 					 <li><a href="FindAllInstr?author=xiaohua2">By Instructor</a></li>
-           			<li><a href="classroombystudent.jsp">By Student</a></li>
-      			<li><a href="classroombycourse.jsp">By Course</a></li>
+           			<li><a href="FindAllStudents?author=xiaohua2">By Student</a></li>
+      			<li><a href="FindAllcourses?author=xiaohua2">By Course</a></li>
 					<li><b>Students</b></li>
 					 <li role="separator" class="divider"></li>
-					 <li><a href="classroombystudent.jsp">Taught by an Instructor</a></li>
+					 <li><a href="FindAllInstr">Taught by Instructor</a></li>
 					 <li><b>Instructors</b></li>
 					 <li role="separator" class="divider"></li>
 					 <li><a href="instructorbyclass.jsp">have taught a class</a></li>
 					 </ul>
+        </li>
+        
+            
+         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Revenue<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+					<li><a href="RevenueClassDisp.jsp">By Class</a></li>
+      			<li><a href="RevenueCourseDisp.jsp">By Course</a></li>
+      			<li><a href="RevenueDeptDisp.jsp">By Department</a></li>
+      			<li><a href="RevenueInstrDisp.jsp">By Instructor</a></li>
+      			<li><a href="SetRevenueDisp.jsp">Set price/credit</a></li>
+					</ul>
         </li>
 					<%
  	}

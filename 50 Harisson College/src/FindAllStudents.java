@@ -34,6 +34,33 @@ public class FindAllStudents extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+	if(request.getParameter("author") != null && request.getParameter("author").equals("xiaohua2")){
+				students = "";
+			
+			
+			Utils<Hcuser> dbu = new Utils<Hcuser>();
+			String q = "Select u from Hcuser u";
+			List<Hcuser> users = null;
+			users = dbu.getList(q);
+			if(users != null)
+			{
+				for(Hcuser cur: users)
+				{
+					if(cur.getType() == 1)
+					{
+						students += studentJsp(cur);
+					}
+				}
+			}
+			
+			System.out.println("going to correct");
+			response.setContentType("text/html");
+			request.setAttribute("students", students);
+			getServletContext().getRequestDispatcher("/classroombystudent.jsp").forward(request, response);
+		}
+		
+		else
+		{
 		students = "";
 		
 		
@@ -52,6 +79,7 @@ public class FindAllStudents extends HttpServlet {
 			}
 		}
 		
+		System.out.println("going to not correct");
 		response.setContentType("text/html");
 		request.setAttribute("students", students);
 		//request.setAttribute("allInstr", allCourse);
@@ -59,7 +87,7 @@ public class FindAllStudents extends HttpServlet {
 		getServletContext().getRequestDispatcher("/ViewStudentsDisp.jsp")
 		.forward(request, response);
 	}
-
+		}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

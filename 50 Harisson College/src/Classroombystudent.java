@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Hcclass;
+import model.Hcclassroom;
+import model.Hcenrolledclass;
 import model.Hcuser;
 import customTools.HcclassDB;
 import customTools.HcuserDB;
@@ -32,18 +35,46 @@ public class Classroombystudent extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int userid = Integer.parseInt(request.getParameter("student"));
+		
+		//Hcuser hcuser=HcuserDB.getStudentByID(userid);
+		Utils<Hcuser> dbu = new Utils<Hcuser>();
+		String q = "Select u from Hcuser u where u.userid = " + userid;
+		Hcuser cuser = null;
+		cuser = dbu.getResult(q);
+		
+		System.out.println(cuser.getName());
 		
 		
-		System.out.println("doget classbyinstructor");
+		List<Hcenrolledclass> list=null;
+		Utils<Hcenrolledclass> dbe = new Utils<Hcenrolledclass>();
+		String m = "Select e from Hcenrolledclass e";
+		list = dbe.getList(m);
 		
-
-        
-		int userid = Integer.parseInt(request.getParameter("userid"));
-		System.out.println(userid);
 		
-		Hcuser hcuser=HcuserDB.getStudentByID(userid);
 		
-		List<Hcclass> list=HcclassDB.getclass(hcuser);
+		if(list == null)
+		{
+			System.out.println("null list");
+		}
+		if(list.size() == 0){
+			System.out.println("the list is empty");
+		}
+		
+		List<Hcclassroom> nlist = new ArrayList<Hcclassroom>();
+		
+		
+		for(Hcenrolledclass cur: list)
+		{
+			if(cur.getHcuser().getUserid() == cuser.getUserid())
+			{
+				Hcclassroom entry = new Hcclassroom();
+				entry = cur.getHcclass().getHcclassroom();
+				nlist.add(entry);
+			}
+		}
+		
+		//System.out.println(list.size());
 		//
 		//hcuser.setName("bb");
 		
@@ -56,7 +87,7 @@ public class Classroombystudent extends HttpServlet {
 	//System.out.println(hcclass.getSemester());	
 	//System.out.println(hcclass.getSemester());
 	
-		request.setAttribute("list", list);
+		request.setAttribute("list", nlist);
 		getServletContext().getRequestDispatcher("/disroombystudent.jsp").forward(request, response);
 		
 		

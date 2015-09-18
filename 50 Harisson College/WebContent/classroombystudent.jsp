@@ -26,24 +26,17 @@
 <body>
 
 	<jsp:include page="navbar.jsp"/>
-	<div class="container">
-  <h2>input userid</h2>
-  <form class="form-horizontal" role="form" action="Classroombystudent" method="post">
-   
-  
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="userid">userid:</label>
-      <div class="col-sm-10">          
-        <input type="text" class="form-control" id="userid" placeholder="Enter userid" name="userid">
-      </div>
-
-  </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
+<div class="container">
+    <form role="form" action="Classroombystudent" method="post">
+      <label for="x">Select Student</label><br>
+	  <select  name="student">
+	   <optgroup label=student>
+	  	${students} 
+	    </optgroup>
+	  </select>	  
+	    <br><br>
+    <button type="submit" class="btn btn-default">Find Classroom</button>
+	</form>
 </div>
 
 
